@@ -1,0 +1,8 @@
+.window-link:hover {cursor:pointer;}
+.window {display:flex; background:rgba(0,0,0,0.8); position:fixed; top:0; left:0; right:0; bottom:0; color:#fff; padding:10px; z-index:2;}
+.window > div {width:100%; max-width:800px; margin:auto; position:relative;}
+.window > div img {width:100%; display:block; overflow:hidden; margin-bottom:10px;}
+.window-close {position:absolute; right:0; top:0; cursor:pointer; text-align:center; font-size:60px; line-height:40px; color:rgba(83,98,120,0.9); background:#fff; width:40px; height:40px;}
+.window-close:hover {color:rgba(83,98,120,0.3);}
+
+.window-modal {background:#fff; color:#536278;}

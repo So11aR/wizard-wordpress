@@ -1,0 +1,282 @@
+<?php 
+
+get_header();
+
+?>
+		<!--#include virtual="inc/header.htm"-->
+		<!--#include virtual="inc/nav.htm"-->
+		<section class="section-line carousel bg-color-grey">
+			<div>
+				<div>
+					<div class="swiper mySwiper swiper-initialized swiper-horizontal">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" role="">
+								<div class="grid col2-1 v-center">
+									<div>
+										<p class="m-b-10">Новая версия на новых скоростях</p>
+										<p>по новым правилам 421 и 557</p>
+										<a href="">Подробнее</a>
+									</div>
+									<div>
+										<img src="img/slide1-1.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="grid col2-1 v-center">
+									<div>
+										<p class="m-b-10">Он-лайн образование</p>
+										<p>
+											Авторские программы<br />
+											Более 200 бесплатных курсов<br />
+											Повышайте свою квалификацию<br />
+										</p>
+										<a href="">Подробнее</a>
+									</div>
+									<div>
+										<img src="img/slide2-1.svg" />
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="grid col2-1 v-center">
+									<div>
+										<p>Станьте нашим партнёром и зарабатывайте деньги!</p>
+										<a href="">Подробнее</a>
+									</div>
+									<div>
+										<img src="img/slide3-1.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide swiper-slide-prev">
+								<div class="grid col2-1 v-center">
+									<div>
+										<p class="m-b-10">TrioBox. Пакетное предложение</p>
+										<p>
+											для строительной отрасли - 
+											<nobr>из BIM-модели</nobr>
+											в смету!
+										</p>
+										<a href="">Подробнее</a>
+									</div>
+									<div>
+										<img src="img/slide4-1.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide swiper-slide-active">
+								<div class="grid col2-1 v-center">
+									<div>
+										<p class="m-b-10">Справочник строителей</p>
+										<p>Новый информационный сервис</p>
+										<a href="">Подробнее</a>
+									</div>
+									<div>
+										<img src="img/slide5-1.jpg" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button"></div>
+						<div class="swiper-button-prev" tabindex="0" role="button"></div>
+						<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+							<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0">fghfgh</span>
+						</div>
+						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+					</div>
+				</div>
+				<!-- <script src="scripts/carousel.js"></script>
+				<script>
+					var swiper = new Swiper(".mySwiper", {
+						spaceBetween: 30,
+						centeredSlides: true,
+						autoplay: {
+							delay: 4500,
+							disableOnInteraction: false,
+						},
+						pagination: {
+							el: ".swiper-pagination",
+							clickable: true,
+						},
+						navigation: {
+							nextEl: ".swiper-button-next",
+							prevEl: ".swiper-button-prev",
+						},
+					});
+				</script> -->
+			</div>
+		</section>
+		<section>
+			<div>
+				<h3>Программные продукты</h3>
+				<div class="grid gap10 col2-1 products-list col-products-index">
+					<a href="">
+						<img src="img/product-smeta.svg" />
+						<p>SmetaWizard. Позволяет автоматизировать расчет, проверку, экспертизу и составление широкого спектра сметной и сопроводительной документации на предприятиях различного профиля.</p>
+					</a>
+					<a href="">
+						<img src="img/product-plan.svg" />
+						<p>PlanWizard. Предназначен для автоматизации управленческой деятельности на строительных предприятиях, а именно — для календарного и сетевого планирования проектов в строительстве.</p>
+					</a>
+					<a href="">
+						<img src="img/product-bim.svg" />
+						<p>BimWizard. Предназначен для автоматизированного получения строительных объемов из систем BIM-моделирования с дальнейшим составлением сметной документации на их основе.</p>
+					</a>
+					<div>
+						<p class="m-b-30">Наш вклад<br />в развитие отрасли</p>
+						<div class="tabs tabs-style-1">
+							<ul class="tabs__caption grid col3-3 gap10 m-b-30">
+								<li class="active"><img src="img/achievements-1.jpg" class="img"></li>
+								<li><img src="img/achievements-2.jpg" class="img"></li>
+								<li><img src="img/achievements-3.jpg" class="img"></li>
+							</ul>
+							<div class="tabs__content active">
+								<img src="img/achievements-1.jpg" class="img m-b-20">
+								<p class="m-b-20">С 15 по 21 августа 2022 года на территории конгрессно-выставочного центра «Патриот», аэродроме «Кубинка» и полигоне «Алабино» прошел VIII Международный военно-технический форум «АРМИЯ-2022». По итогам научно-деловой программы форума было проведено 340 мероприятий, 187 круглых столов ...</p>
+								<a href="">Подробнее</a>
+							</div>
+							<div class="tabs__content">
+								<img src="img/achievements-2.jpg" class="img m-b-20">
+								<p class="m-b-20">Более сотни студентов со всей России из Москвы, Санкт-Петербурга, Калининграда, Орла, Курска, Воронежа, Оренбурга, Липецка, Ростова, Севастополя, Старого Оскола, Казани, Екатеринбурга и Донецка приняли участие в проектно-образовательном интенсиве «Школа Шухова 2.0», который проводит БГТУ им. В.Г. Шухова ...</p>
+								<a href="">Подробнее</a>
+							</div>
+							<div class="tabs__content">
+								<img src="img/achievements-3.jpg" class="img m-b-20">
+								<p class="m-b-20">15 июня 2022 года в Москве состоялся VI Российский нефтегазовый IT-Саммит «Интеллектуальное месторождение», который прошёл при поддержке Министерства цифрового развития, связи и массовых коммуникаций РФ, Министерства энергетики РФ, Российского Газового Общества ...</p>
+								<a href="">Подробнее</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="bg-color-grey">
+			<div>
+				<div class="grid col2-2">
+					<div>
+						<h2>Календарь мероприятий</h2>
+					</div>
+					<div class="text-right"><a href="">Все мероприятия</a></div>
+				</div>
+				<div class="v-scroll">
+					<div class="grid col4-2-1 gap10 news-list calendar">
+						<a href="">
+							<p>
+								<font>25.10.2022</font>
+								<span><span class="material-icons">school</span> Курс №7 / 5.0</span>Тема 7: Работа с формой Конъюнктурный анализ
+							</p>
+						</a>
+						<a href="">
+							<p>
+								<font>29.11.2022</font>
+								<span><span class="material-icons">cast</span> Вебинар №8 / 5.0</span>Тема 8: Формы Объектная смета, Сводный сметный расчет и Сводка затрат
+							</p>
+						</a>
+						<a href="">
+							<p>
+								<font>27.12.2022</font>
+								<span><span class="material-icons">cast_for_education</span> Онлайн-видеоурок №9 / 5.0</span>Тема 9: Формы отчетности: КС-3, Журнал учета выполненных работ
+							</p>
+						</a>
+						<a href="">
+							<p>
+								<font>31.01.2023</font>
+								<span><span class="material-icons">rocket_launch</span> Интенсив №10 / 5.0</span>Тема 10: Формы отчетности: М29, Ресурсная ведомость, Ведомость объемов работ
+							</p>
+						</a>
+						<!--
+							<a href="">
+								<p>
+									<font>31.01.2023</font>
+									<span><span class="material-icons">group</span> Семинар №10 /5.0</span>Тема 10: Формы отчетности: М29, Ресурсная ведомость, Ведомость объемов работ
+								</p>
+							</a>
+							<a href="">
+								<p>
+									<font>31.01.2023</font>
+									<span><span class="material-icons">groups</span> Конференция №10 /5.0</span>Тема 10: Формы отчетности: М29, Ресурсная ведомость, Ведомость объемов работ
+								</p>
+							</a>
+							-->
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div>
+				<div class="grid col2-2">
+					<div>
+						<h2>
+						Новости</a>
+					</div>
+					<div class="text-right"><a href="">Все новости</a></div>
+				</div>
+				<div class="v-scroll m-b-50">
+					<div class="grid col3-1 gap10 news-list news">
+						<a href="">
+							<img src="img/logo-w-red.svg" />
+							<p>
+								<font>24.10.2022</font>
+								Еженедельный бюллетень «Ассистент строителя» № 4 (522) за октябрь 2022 года
+							</p>
+						</a>
+						<a href="">
+							<img src="img/minstroy.png" />
+							<p>
+								<font>21.10.2022</font>
+								Минстрой РФ опубликовал дополнения к индексам изменения сметной стоимости за 3 квартал 2022 года
+							</p>
+						</a>
+						<a href="">
+							<img src="img/product-smeta.svg" />
+							<p>
+								<font>17.10.2022</font>
+								Изменения в сметно-нормативной базе ПП SmetaWIZARD с 10 по 14 октября 2022 года
+							</p>
+						</a>
+					</div>
+				</div>
+				<h2>Партнеры</h2>
+				<div class="grid col6-3-2 gap10 partners-list">
+					<img src="img/partners/minstroy.png" />
+					<img src="img/partners/teach-and-study.svg" />
+					<img src="img/partners/ipap.svg" />
+					<img src="img/partners/bimsystem.png" />
+					<img src="img/partners/bim-academy.svg" />
+					<img src="img/partners/renga.png" />
+				</div>
+			</div>
+		</section>
+		<section class="bg-color-grey">
+			<div>
+				<h2>Подписаться на рассылку</h2>
+				<form class="grid gap10 subscribe-main">
+					<div class="grid subscribe gap10">
+						<div><input type="text" name="name" id="name" required placeholder="Ваше имя"></div>
+						<div><input type="text" name="email" id="email" required placeholder="Введите ваш e-mail"></div>
+						<div class="checkbox">
+							<input type="checkbox" id="checkbox_1">
+							<label for="checkbox_1"><small>Подписываясь на рассылку, соглашаюсь с <a href="" class="link-grey">Политикой конфиденциальности</a></small></label>
+						</div>
+					</div>
+					<div><input type="submit" value="Подписаться"></div>
+				</form>
+			</div>
+		</section>
+		<!--#include virtual="inc/footer.htm"-->
+
+
+<?php
+
+get_footer();
+
+?>

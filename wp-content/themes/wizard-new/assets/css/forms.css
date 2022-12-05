@@ -1,0 +1,32 @@
+input, textarea {font-size:15px; font-family: 'Roboto', sans-serif; border-radius:2px;}
+input[type="text"] {width:100%; border:1px solid #ccd2df; padding:10px 15px; outline:none; color:#536278;}
+input[type="text"]::placeholder {color:#abb2c1;}
+
+textarea {resize:none; width:100%; border:1px solid #ccd2df; padding:10px 15px; outline:none; color:#536278;}
+textarea::placeholder {color:#abb2c1;}
+
+.checkbox input[type="checkbox"] {display:none;}
+.checkbox label {position:relative; display:inline-block; padding-left:25px;}
+.checkbox label::before, .checkbox label::after {position:absolute; content:""; display:inline-block; color:#f50000;}
+.checkbox label::before{height:16px; width:16px; border:1px solid #ccd2df; background:#fff; left:0px; top:3px;}
+.checkbox label::after {height:5px; width:9px; border-left:2px solid; border-bottom:2px solid; transform:rotate(-45deg); left:4px; top:7px;}
+.checkbox input[type="checkbox"] + label::after {content:none;}
+.checkbox input[type="checkbox"]:checked + label::after {content:"";}
+.checkbox input[type="checkbox"]:focus + label::before {}
+
+input[type="submit"] {background:#536278; color:#fff; cursor:pointer; border:0; padding:10px 15px; font-weight:700; text-align:center;}
+input[type="submit"]:hover {background:#f50000;}
+
+div {scrollbar-width:thin; scrollbar-color:#dfe1e3;}
+/* для Chrome/Edge/Safari */
+div::-webkit-scrollbar {height:8px; width:8px;}
+div::-webkit-scrollbar-track {background:#dfe1e3;}
+div::-webkit-scrollbar-thumb {background-color:#c2c7d3;}
+div::-webkit-scrollbar-thumb:hover {background-color:#b1b7c3;}
+
+
+.btn1{color:#fff; color:#536278; font-weight:700; padding:10px 15px; text-align:center; border-radius:2px; outline:2px solid #dadee5;}
+.btn1:hover {outline:2px solid #f50000; color:#f50000;}
+
+.btn2 {background:#fff; color:#536278; font-weight:700; padding:20px 25px; font-size:16px; text-align:center; border-radius:2px; outline:2px solid #dadee5;}
+.btn2:hover {color:#f50000;  outline:2px solid #f50000;}
