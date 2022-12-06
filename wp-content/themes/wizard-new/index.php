@@ -12,73 +12,58 @@ get_header();
 		<div>
 			<div class="swiper mySwiper swiper-initialized swiper-horizontal">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" role="">
-						<div class="grid col2-1 v-center">
-							<div>
-								<p class="m-b-10">Новая версия на новых скоростях</p>
-								<p>по новым правилам 421 и 557</p>
-								<a href="">Подробнее</a>
-							</div>
-							<div>
-								<img src="img/slide1-1.jpg" />
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="grid col2-1 v-center">
-							<div>
-								<p class="m-b-10">Он-лайн образование</p>
-								<p>
-									Авторские программы<br />
-									Более 200 бесплатных курсов<br />
-									Повышайте свою квалификацию<br />
-								</p>
-								<a href="">Подробнее</a>
-							</div>
-							<div>
-								<img src="img/slide2-1.svg" />
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="grid col2-1 v-center">
-							<div>
-								<p>Станьте нашим партнёром и зарабатывайте деньги!</p>
-								<a href="">Подробнее</a>
-							</div>
-							<div>
-								<img src="img/slide3-1.jpg" />
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide swiper-slide-prev">
-						<div class="grid col2-1 v-center">
-							<div>
-								<p class="m-b-10">TrioBox. Пакетное предложение</p>
-								<p>
-									для строительной отрасли -
-									<nobr>из BIM-модели</nobr>
-									в смету!
-								</p>
-								<a href="">Подробнее</a>
-							</div>
-							<div>
-								<img src="img/slide4-1.jpg" />
+
+					<?php
+
+					// параметры по умолчанию
+					$my_posts = get_posts(array(
+						'numberposts' => -1,
+						'category'    => 0,
+						'orderby'     => 'date',
+						'order'       => 'ASC',
+						'include'     => array(),
+						'exclude'     => array(),
+						'meta_key'    => '',
+						'meta_value'  => '',
+						'post_type'   => 'slider-header',
+						'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+					));
+
+					global $post;
+
+					foreach ($my_posts as $post) {
+						setup_postdata($post);
+
+					?>
+
+						<a href=""><img src="" /></a>
+
+						<div class="swiper-slide">
+							<div class="grid col2-1 v-center">
+								<div>
+									<p class="m-b-10"><?php the_title(); ?></p>
+									<p><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
+									<a href="">Подробнее</a>
+								</div>
+								<div>
+									<img src="<?php echo get_the_post_thumbnail_url(); ?>" />
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="swiper-slide swiper-slide-active">
-						<div class="grid col2-1 v-center">
-							<div>
-								<p class="m-b-10">Справочник строителей</p>
-								<p>Новый информационный сервис</p>
-								<a href="">Подробнее</a>
-							</div>
-							<div>
-								<img src="img/slide5-1.jpg" />
-							</div>
-						</div>
-					</div>
+
+					<?php
+
+						// формат вывода the_title() ...
+					}
+
+					wp_reset_postdata(); // сброс
+
+					?>
+
+
+					
+					
+					
 				</div>
 				<div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button"></div>
 				<div class="swiper-button-prev" tabindex="0" role="button"></div>
@@ -279,7 +264,7 @@ get_header();
 			</div>
 		</div>
 
-		
+
 		<h2>Партнеры</h2>
 		<div class="grid col6-3-2 gap10 partners-list">
 			<?php
@@ -315,7 +300,7 @@ get_header();
 			wp_reset_postdata(); // сброс
 
 			?>
-			
+
 		</div>
 	</div>
 </section>
