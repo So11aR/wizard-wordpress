@@ -17,6 +17,8 @@ function wizardsoft_assets()
   wp_enqueue_script( 'window-script', get_template_directory_uri() . '/assets/scripts/window.js', array(), '20151215', true );
   wp_enqueue_script( 'carousel', get_template_directory_uri() . '/assets/scripts/carousel.js', array(), '20151215', true );
   wp_enqueue_script( 'swiper-slider', get_template_directory_uri() . '/assets/scripts/swiper-slider.js', array(), '20151215', true );
+  wp_enqueue_script( 'sergey', get_template_directory_uri() . '/assets/scripts/sergey.js', array(), '20151215', true );
+
 
 
 

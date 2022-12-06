@@ -63,7 +63,7 @@ get_header();
 				<div class="swiper-button-prev" tabindex="0" role="button"></div>
 				<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
 					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					
+
 					<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0">fghfgh</span>
 				</div>
 				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -119,22 +119,25 @@ get_header();
 				<p class="m-b-30">Наш вклад<br />в развитие отрасли</p>
 				<div class="tabs tabs-style-1">
 					<ul class="tabs__caption grid col3-3 gap10 m-b-30">
-						<li class="active"><img src="img/achievements-1.jpg" class="img"></li>
-						<li><img src="img/achievements-2.jpg" class="img"></li>
-						<li><img src="img/achievements-3.jpg" class="img"></li>
+						<li class="active"><img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-1.jpg" class="img"></li>
+						<li class=""><img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-2.jpg" class="img"></li>
+						<li class=""><img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-3.jpg" class="img"></li>
 					</ul>
+					
+
 					<div class="tabs__content active">
-						<img src="img/achievements-1.jpg" class="img m-b-20">
+
+						<img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-1.jpg" class="img m-b-20">
 						<p class="m-b-20">С 15 по 21 августа 2022 года на территории конгрессно-выставочного центра «Патриот», аэродроме «Кубинка» и полигоне «Алабино» прошел VIII Международный военно-технический форум «АРМИЯ-2022». По итогам научно-деловой программы форума было проведено 340 мероприятий, 187 круглых столов ...</p>
 						<a href="">Подробнее</a>
 					</div>
 					<div class="tabs__content">
-						<img src="img/achievements-2.jpg" class="img m-b-20">
+						<img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-2.jpg" class="img m-b-20">
 						<p class="m-b-20">Более сотни студентов со всей России из Москвы, Санкт-Петербурга, Калининграда, Орла, Курска, Воронежа, Оренбурга, Липецка, Ростова, Севастополя, Старого Оскола, Казани, Екатеринбурга и Донецка приняли участие в проектно-образовательном интенсиве «Школа Шухова 2.0», который проводит БГТУ им. В.Г. Шухова ...</p>
 						<a href="">Подробнее</a>
 					</div>
 					<div class="tabs__content">
-						<img src="img/achievements-3.jpg" class="img m-b-20">
+						<img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-3.jpg" class="img m-b-20">
 						<p class="m-b-20">15 июня 2022 года в Москве состоялся VI Российский нефтегазовый IT-Саммит «Интеллектуальное месторождение», который прошёл при поддержке Министерства цифрового развития, связи и массовых коммуникаций РФ, Министерства энергетики РФ, Российского Газового Общества ...</p>
 						<a href="">Подробнее</a>
 					</div>
