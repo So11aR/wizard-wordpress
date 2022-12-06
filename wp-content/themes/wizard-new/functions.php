@@ -3,11 +3,12 @@
 
 function wizardsoft_assets()
 {
-  wp_enqueue_style('maincss', get_template_directory_uri() . '/assets/css/style.css');
+  
   wp_enqueue_style('formscss', get_template_directory_uri() . '/assets/css/forms.css');
   wp_enqueue_style('tabscss', get_template_directory_uri() . '/assets/css/tabs.css');
   wp_enqueue_style('windowcss', get_template_directory_uri() . '/assets/css/window.css');
   wp_enqueue_style('carouselcss', get_template_directory_uri() . '/assets/css/carousel.css');
+  wp_enqueue_style('maincss', get_template_directory_uri() . '/assets/css/style.css');
 
   // wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/scripts/jquery-3.6.1.min.js', array(), '20151215', true );
   wp_enqueue_script( 'nav-script', get_template_directory_uri() . '/assets/scripts/nav.js', array(), '20151215', true );

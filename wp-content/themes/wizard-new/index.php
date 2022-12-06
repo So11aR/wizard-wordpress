@@ -36,8 +36,6 @@ get_header();
 
 					?>
 
-						<a href=""><img src="" /></a>
-
 						<div class="swiper-slide">
 							<div class="grid col2-1 v-center">
 								<div>
@@ -60,46 +58,18 @@ get_header();
 
 					?>
 
-
-					
-					
-					
 				</div>
 				<div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button"></div>
 				<div class="swiper-button-prev" tabindex="0" role="button"></div>
 				<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
 					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+					
 					<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0">fghfgh</span>
 				</div>
 				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 			</div>
 		</div>
-		<!-- <script src="scripts/carousel.js"></script>
-				<script>
-					var swiper = new Swiper(".mySwiper", {
-						spaceBetween: 30,
-						centeredSlides: true,
-						autoplay: {
-							delay: 4500,
-							disableOnInteraction: false,
-						},
-						pagination: {
-							el: ".swiper-pagination",
-							clickable: true,
-						},
-						navigation: {
-							nextEl: ".swiper-button-next",
-							prevEl: ".swiper-button-prev",
-						},
-					});
-				</script> -->
+
 	</div>
 </section>
 
