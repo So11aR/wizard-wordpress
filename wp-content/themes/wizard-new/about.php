@@ -104,15 +104,7 @@
       wp_reset_postdata(); // сброс
 
       ?>
-
-
-
-
-
-
-      <!-- <a href=""><img src="img/google.svg" /></a>
-      <a href=""><img src="img/2gis.svg" /></a>
-      <a href=""><img src="img/vk.svg" /></a> -->
+      
     </div>
   </div>
 </section>
