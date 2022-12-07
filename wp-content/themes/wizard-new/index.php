@@ -119,19 +119,91 @@ get_header();
 				<p class="m-b-30">Наш вклад<br />в развитие отрасли</p>
 				<div class="tabs tabs-style-1">
 					<ul class="tabs__caption grid col3-3 gap10 m-b-30">
-						<li class="active"><img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-1.jpg" class="img"></li>
-						<li class=""><img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-2.jpg" class="img"></li>
-						<li class=""><img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-3.jpg" class="img"></li>
-					</ul>
-					
 
-					<div class="tabs__content active">
+						<?php
+
+						// параметры по умолчанию
+						$my_posts = get_posts(array(
+							'numberposts' => -1,
+							'category'    => 0,
+							'orderby'     => 'date',
+							'order'       => 'ASC',
+							'include'     => array(),
+							'exclude'     => array(),
+							'meta_key'    => '',
+							'meta_value'  => '',
+							'post_type'   => 'vklad-mini-img',
+							'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+						));
+
+						global $post;
+
+						foreach ($my_posts as $post) {
+							setup_postdata($post);
+
+						?>
+
+							<li class="miniVklad"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img"></li>
+
+						<?php
+
+							// формат вывода the_title() ...
+						}
+
+						wp_reset_postdata(); // сброс
+
+						?>
+
+					</ul>
+
+
+					<?php
+
+					// параметры по умолчанию
+					$my_posts = get_posts(array(
+						'numberposts' => -1,
+						'category'    => 0,
+						'orderby'     => 'date',
+						'order'       => 'ASC',
+						'include'     => array(),
+						'exclude'     => array(),
+						'meta_key'    => '',
+						'meta_value'  => '',
+						'post_type'   => 'vklad-main',
+						'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+					));
+
+					global $post;
+
+					foreach ($my_posts as $post) {
+						setup_postdata($post);
+
+					?>
+
+						<div class="tabs__content">
+
+							<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img m-b-20">
+							<p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr', true); ?></p>
+							<a href="">Подробнее</a>
+						</div>
+
+					<?php
+
+						// формат вывода the_title() ...
+					}
+
+					wp_reset_postdata(); // сброс
+
+					?>
+
+
+					<!-- <div class="tabs__content active">
 
 						<img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-1.jpg" class="img m-b-20">
 						<p class="m-b-20">С 15 по 21 августа 2022 года на территории конгрессно-выставочного центра «Патриот», аэродроме «Кубинка» и полигоне «Алабино» прошел VIII Международный военно-технический форум «АРМИЯ-2022». По итогам научно-деловой программы форума было проведено 340 мероприятий, 187 круглых столов ...</p>
 						<a href="">Подробнее</a>
-					</div>
-					<div class="tabs__content">
+					</div> -->
+					<!-- <div class="tabs__content">
 						<img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-2.jpg" class="img m-b-20">
 						<p class="m-b-20">Более сотни студентов со всей России из Москвы, Санкт-Петербурга, Калининграда, Орла, Курска, Воронежа, Оренбурга, Липецка, Ростова, Севастополя, Старого Оскола, Казани, Екатеринбурга и Донецка приняли участие в проектно-образовательном интенсиве «Школа Шухова 2.0», который проводит БГТУ им. В.Г. Шухова ...</p>
 						<a href="">Подробнее</a>
@@ -140,7 +212,7 @@ get_header();
 						<img src="http://localhost:8888/wp-content/uploads/2022/12/achievements-3.jpg" class="img m-b-20">
 						<p class="m-b-20">15 июня 2022 года в Москве состоялся VI Российский нефтегазовый IT-Саммит «Интеллектуальное месторождение», который прошёл при поддержке Министерства цифрового развития, связи и массовых коммуникаций РФ, Министерства энергетики РФ, Российского Газового Общества ...</p>
 						<a href="">Подробнее</a>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
