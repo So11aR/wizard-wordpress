@@ -101,7 +101,7 @@ get_header();
 
 			?>
 
-				<a href="">
+				<a href="" class="programmProductElem">
 					<img src="<?php echo get_the_post_thumbnail_url(); ?>" />
 					<p><?php echo get_post_meta(get_the_ID(), 'descr', true); ?></p>
 				</a>
@@ -209,33 +209,41 @@ get_header();
 			<div>
 				<h2>Календарь мероприятий</h2>
 			</div>
-			<div class="text-right"><a href="">Все мероприятия</a></div>
+			<div class="text-right"><a href="events/events.htm">Все мероприятия</a></div>
 		</div>
 		<div class="v-scroll">
 			<div class="grid col4-2-1 gap10 news-list calendar">
-				<a href="">
-					<p>
-						<font>25.10.2022</font>
-						<span><span class="material-icons">school</span> Курс №7 / 5.0</span>Тема 7: Работа с формой Конъюнктурный анализ
-					</p>
+				<a href="events/24-10-2022.htm" class="grid-item kursi">
+					<div class="grid col2-2">
+						<div>25.10.2022</div>
+						<div>Организатор: ИПАП</div>
+					</div>
+					<p><span class="material-icons">school</span> Курс №7 / 5.0</p>
+					Тема 7: Работа с формой Конъюнктурный анализ
 				</a>
-				<a href="">
-					<p>
-						<font>29.11.2022</font>
-						<span><span class="material-icons">cast</span> Вебинар №8 / 5.0</span>Тема 8: Формы Объектная смета, Сводный сметный расчет и Сводка затрат
-					</p>
+				<a href="" class="grid-item webinar">
+					<div class="grid col2-2">
+						<div>25.10.2022</div>
+						<div>Организатор: ИПАП</div>
+					</div>
+					<p><span class="material-icons">cast</span> Курс №7 / 5.0</p>
+					Тема 7: Работа с формой Конъюнктурный анализ
 				</a>
-				<a href="">
-					<p>
-						<font>27.12.2022</font>
-						<span><span class="material-icons">cast_for_education</span> Онлайн-видеоурок №9 / 5.0</span>Тема 9: Формы отчетности: КС-3, Журнал учета выполненных работ
-					</p>
+				<a href="" class="grid-item online">
+					<div class="grid col2-2">
+						<div>25.10.2022</div>
+						<div>Организатор: ИПАП</div>
+					</div>
+					<p><span class="material-icons">cast_for_education</span> Курс №7 / 5.0</p>
+					Тема 7: Работа с формой Конъюнктурный анализ
 				</a>
-				<a href="">
-					<p>
-						<font>31.01.2023</font>
-						<span><span class="material-icons">rocket_launch</span> Интенсив №10 / 5.0</span>Тема 10: Формы отчетности: М29, Ресурсная ведомость, Ведомость объемов работ
-					</p>
+				<a href="" class="grid-item int">
+					<div class="grid col2-2">
+						<div>25.10.2022</div>
+						<div>Организатор: ИПАП</div>
+					</div>
+					<p><span class="material-icons">rocket_launch</span> Курс №7 / 5.0</p>
+					Тема 7: Работа с формой Конъюнктурный анализ
 				</a>
 				<!--
 							<a href="">
@@ -257,18 +265,17 @@ get_header();
 </section>
 
 <!-- Новости -->
-<section>
+<section class="carousel">
 	<div>
 		<div class="grid col2-2">
 			<div>
-				<h2>
-					Новости</a>
+				<h2>Новости</h2>
 			</div>
-			<div class="text-right"><a href="">Все новости</a></div>
+			<div class="text-right"><a href="news/news.htm">Все новости</a></div>
 		</div>
 		<div class="v-scroll m-b-50">
 			<div class="grid col3-1 gap10 news-list news">
-				<a href="">
+				<a href="news/24-10-2022.htm">
 					<img src="img/logo-w-red.svg" />
 					<p>
 						<font>24.10.2022</font>
@@ -291,45 +298,53 @@ get_header();
 				</a>
 			</div>
 		</div>
+		<h2><a href="cooperation/partners.htm">Партнеры</a></h2>
+		<div>
+			<div class="swiper mySwiper2 swiper-initialized swiper-horizontal partners">
+				<div class="swiper-wrapper ">
+					<?php
 
+					// параметры по умолчанию
+					$my_posts = get_posts(array(
+						'numberposts' => -1,
+						'category'    => 0,
+						'orderby'     => 'date',
+						'order'       => 'ASC',
+						'include'     => array(),
+						'exclude'     => array(),
+						'meta_key'    => '',
+						'meta_value'  => '',
+						'post_type'   => 'partners-block',
+						'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+					));
 
-		<h2>Партнеры</h2>
-		<div class="grid col6-3-2 gap10 partners-list">
-			<?php
+					global $post;
 
-			// параметры по умолчанию
-			$my_posts = get_posts(array(
-				'numberposts' => -1,
-				'category'    => 0,
-				'orderby'     => 'date',
-				'order'       => 'ASC',
-				'include'     => array(),
-				'exclude'     => array(),
-				'meta_key'    => '',
-				'meta_value'  => '',
-				'post_type'   => 'partners-block',
-				'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-			));
+					foreach ($my_posts as $post) {
+						setup_postdata($post);
 
-			global $post;
+					?>
 
-			foreach ($my_posts as $post) {
-				setup_postdata($post);
+						<div class="swiper-slide" role="">
+							<a href="" target="_blank"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" /></a>
+						</div>
 
-			?>
+					<?php
 
-				<img src="<?php echo get_the_post_thumbnail_url(); ?>" />
+						// формат вывода the_title() ...
+					}
 
-			<?php
+					wp_reset_postdata(); // сброс
 
-				// формат вывода the_title() ...
-			}
+					?>
 
-			wp_reset_postdata(); // сброс
-
-			?>
-
+				</div>
+				<div class="swiper-button-next swiper-button-disabled" style="top: 50%; transform:translateY(-50%)" tabindex="-1" role="button"></div>
+				<div class="swiper-button-prev" style="top: 50%; transform:translateY(-50%)" tabindex="0" role="button"></div>
+				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+			</div>
 		</div>
+		
 	</div>
 </section>
 

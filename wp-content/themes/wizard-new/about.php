@@ -104,7 +104,7 @@
       wp_reset_postdata(); // сброс
 
       ?>
-      
+
     </div>
   </div>
 </section>
@@ -118,7 +118,48 @@
     </div>
     <div>
       <div class="grid col3-1 gap10 news-list achievements">
-        <a href="">
+        <?php
+
+        // параметры по умолчанию
+        $my_posts = get_posts(array(
+          'numberposts' => -1,
+          'category'    => 0,
+          'orderby'     => 'date',
+          'order'       => 'ASC',
+          'include'     => array(),
+          'exclude'     => array(),
+          'meta_key'    => '',
+          'meta_value'  => '',
+          'post_type'   => 'page-about-vklad',
+          'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+        ));
+
+        global $post;
+
+        foreach ($my_posts as $post) {
+          setup_postdata($post);
+
+        ?>
+
+          <a href="">
+            <img src="<?php echo get_the_post_thumbnail_url(); ?>" />
+            <p>
+              <font><?php echo get_post_meta(get_the_ID(), 'date-post', true); ?></font>
+              <?php echo get_post_meta(get_the_ID(), 'descr', true); ?>
+            </p>
+          </a>
+
+        <?php
+
+          // формат вывода the_title() ...
+        }
+
+        wp_reset_postdata(); // сброс
+
+        ?>
+
+
+        <!-- <a href="">
           <img src="../img/achievements-1.jpg" />
           <p>
             <font>24.10.2022</font>
@@ -138,7 +179,7 @@
             <font>17.10.2022</font>
             15 июня 2022 года в Москве состоялся VI Российский нефтегазовый IT-Саммит «Интеллектуальное месторождение»
           </p>
-        </a>
+        </a> -->
       </div>
     </div>
   </div>
