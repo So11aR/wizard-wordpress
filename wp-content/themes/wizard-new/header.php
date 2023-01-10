@@ -27,9 +27,10 @@
         <div>+7 (950) 043-18-24<br />+7 (950) 043-18-24</div>
         <div>
           <div class="window-link"><span class="material-icons">phone_in_talk</span> <span>Заказать звонок</span></div>
-          <div class="window">
+          <div class="window callback">
             <div class="window-modal p40 r5">
-              <h2><span class="material-icons">phone_in_talk</span> Заказать звонок</h2>
+              <h2><span class="material-icons" title="Заказать звонок">phone_in_talk</span> Заказать звонок</h2>
+              <input type="text" name="name" id="name" required placeholder="Ваше имя" class="m-b-20">
               <input type="text" name="name" id="name" required placeholder="Ваш номер телефона" class="m-b-20">
               <input type="submit" value="Заказать">
               <div class="window-close">×</div>
@@ -37,22 +38,25 @@
           </div>
         </div>
         <div>
-          <a href=""><span class="material-icons">search</span> <span>Поиск по сайту</span></a>
+          <a href=""><span class="material-icons" title="Поиск по сайту">search</span> <span>Поиск по сайту</span></a>
         </div>
         <div>
-          <div class="window-link"><span class="material-icons">account_circle</span> <span>Личный кабинет</span></div>
-          <div class="window">
-            <div class="window-modal p40 r5">
-              <h2><span class="material-icons">account_circle</span> Личный кабинет</h2>
-              <input type="text" name="name" id="name" required placeholder="Логин" class="m-b-20">
-              <div class="grid m-b-20 v-center" style="grid-template-columns:auto 40px;">
-                <input type="text" name="name" id="name" required placeholder="Пароль">
-                <div class="text-right"><span class="material-icons">visibility_off</span></div>
-              </div>
-              <input type="submit" value="Войти">
-              <div class="window-close">×</div>
-            </div>
-          </div>
+          <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/update/update.htm"><span class="material-icons" title="Загрузить обновления">refresh</span> <span>Загрузить обновления</span></a>
+          <!--
+				<div class="window-link"><span class="material-icons">account_circle</span> <span>Личный кабинет</span></div>
+				<div class="window">
+					<div class="window-modal p40 r5">
+						<h2><span class="material-icons">account_circle</span> Личный кабинет</h2>
+						<input type="text" name="name" id="name" required placeholder="Логин" class="m-b-20">
+						<div class="grid m-b-20 v-center" style="grid-template-columns:auto 40px;">
+							<input type="text" name="name" id="name" required placeholder="Пароль">
+							<div class="text-right"><span class="material-icons">visibility_off</span></div>
+						</div>
+						<input type="submit" value="Войти">
+						<div class="window-close">×</div>
+					</div>
+				</div>
+				-->
         </div>
       </div>
     </div>
