@@ -3,6 +3,14 @@
 get_header();
 
 ?>
+
+<?php
+
+/* Template Name: main-page */
+
+?>
+
+
 <!--#include virtual="inc/header.htm"-->
 <!--#include virtual="inc/nav.htm"-->
 

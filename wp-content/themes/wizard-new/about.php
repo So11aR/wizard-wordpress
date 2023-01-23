@@ -94,7 +94,7 @@
 
       ?>
 
-        <a href=""><img src="<?php echo get_the_post_thumbnail_url(); ?>" /></a>
+        <a href="<?php echo get_post_meta(get_the_ID(), 'reviews_link', true); ?>"><img src="<?php echo get_the_post_thumbnail_url(); ?>" /></a>
 
       <?php
 

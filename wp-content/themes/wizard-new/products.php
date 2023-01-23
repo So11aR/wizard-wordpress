@@ -13,34 +13,51 @@
       <a href="../">Главная</a>
     </div> -->
     <h1>Программные продукты</h1>
-    <p class="m-b-30"><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
+    <?php echo get_post_meta(get_the_ID(), 'descr1', true); ?>
 
     <div class="grid col2-1 gap10 col-products-products m-b-30">
-      <a href="products-smeta.htm" class="smeta">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/product-smeta.svg" />
-        <p class="m-b-20">SmetaWizard. Позволяет автоматизировать расчет, проверку, экспертизу и составление широкого спектра сметной и сопроводительной документации на предприятиях различного профиля.</p>
-        <p class="m-b-20"><strong>Модули</strong></p>
-        <div class="grid col2-2 gap20">
-          <div><span class="material-icons">dashboard_customize</span> ПНР</div>
-          <div><span class="material-icons">dashboard_customize</span> ПИР</div>
-          <div><span class="material-icons">dashboard_customize</span> УНЦС</div>
-          <div><span class="material-icons">dashboard_customize</span> НМЦК</div>
-          <div><span class="material-icons">dashboard_customize</span> Дорожный</div>
-          <div><span class="material-icons">bolt</span> Энергоаудит</div>
-        </div>
-      </a>
-      <a href="" class="plan">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/product-plan.svg" />
-        <p>PlanWizard. Предназначен для автоматизации управленческой деятельности на строительных предприятиях, а именно — для календарного и сетевого планирования проектов в строительстве.</p>
-      </a>
-      <a href="" class="bim">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/product-bim.svg" />
-        <p class="m-b-20">BimWizard. Предназначен для автоматизированного получения строительных объемов из систем BIM-моделирования с дальнейшим составлением сметной документации на их основе.</p>
-        <p class="m-b-20"><strong>Модули</strong></p>
-        <div class="grid col2-2 gap20">
-          <div><span class="material-icons">dashboard_customize</span> Infobase Wizard</div>
-        </div>
-      </a>
+
+      <?php
+
+      // параметры по умолчанию
+      $my_posts = get_posts(array(
+        'numberposts' => -1,
+        'category'    => 0,
+        'orderby'     => 'date',
+        'order'       => 'ASC',
+        'include'     => array(),
+        'exclude'     => array(),
+        'meta_key'    => '',
+        'meta_value'  => '',
+        'post_type'   => 'program-products',
+        'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+      ));
+
+      global $post;
+
+      foreach ($my_posts as $post) {
+        setup_postdata($post);
+
+      ?>
+
+        <a href="" class="programmProductsElem">
+          <img src="<?php echo get_the_post_thumbnail_url(); ?>" />
+          <?php echo get_post_meta(get_the_ID(), 'descr', true); ?>
+          <?php echo get_post_meta(get_the_ID(), 'module_title', true); ?>
+          <div class="grid col2-2 gap20">
+            <?php echo get_post_meta(get_the_ID(), 'products_modules', true); ?>
+          </div>
+        </a>
+
+      <?php
+
+        // формат вывода the_title() ...
+      }
+
+      wp_reset_postdata(); // сброс
+
+      ?>
+
     </div>
 
     <div class="grid col4-2 gap10 products-list2">
@@ -52,6 +69,7 @@
       <a href=""><span class="material-icons">dashboard_customize</span>Модуль Дорожный</a>
       <a href=""><span class="material-icons">bolt</span>Энергоаудит</a>
       <a href=""><span class="material-icons">tv</span>Установка под Linux</a>
+      <a href=""><span class="material-icons">dashboard_customize</span> Infobase Wizard</a>
     </div>
   </div>
 </section>

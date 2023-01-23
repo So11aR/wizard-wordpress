@@ -8,10 +8,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
   tabs__content[0].classList.add('active')
 
   let programm = document.querySelectorAll(".programmProductElem");
+  console.log(programm);
   programm[0].classList.add('smeta')
   programm[1].classList.add('plan')
   programm[2].classList.add('bim')
 });
+
+
+
+
 
 
 
