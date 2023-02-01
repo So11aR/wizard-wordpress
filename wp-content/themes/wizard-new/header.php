@@ -94,13 +94,13 @@
               </div>
             </li>
             <li>
-              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/services.htm">Обучение и поддержка</a></p>
+              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/services.htm">Поддержка и обучение</a></p>
               <div>
                 <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/videocourse-list.htm">Видеоуроки</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/demand-free-presentation.htm">Заказать презентацию</a>
+                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/order-a-demo">Заказать демонстрацию</a>
                 <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/learning.htm">Обучение</a>
                 <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/freeconsultation.htm">Бесплатная консультация</a>
-                <a href="">Заявка в<br />техподдержку</a>
+                <a href="http://tickets.wizardsoft.ru/">Заявка в<br />техподдержку</a>
                 <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/interactive-support.htm">Удаленная техподдержка</a>
               </div>
             </li>
@@ -114,19 +114,20 @@
               </div>
             </li>
             <li>
-              <p><a href="">Сотрудничество</a></p>
+              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/cooperation.htm">Сотрудничество</a></p>
               <div>
-                <a href="">Партнерская<br />программа</a>
-                <a href="">Магазины<br />наших партнеров</a>
-                <a href="">Наши дилеры</a>
+                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/study.htm">Учебные центры</a>
+                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/partners.htm">Партнеры</a>
               </div>
             </li>
             <li>
-              <p><a href="">Контакты</a></p>
+              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/contacts/contacts.htm">Контакты</a></p>
             </li>
           </ul>
         </div>
       </div>
+
+
       <ul class="nav-menu">
         <li class="dop">
           <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/about.htm">О компании</a></p>
@@ -159,14 +160,14 @@
           </div>
         </li>
         <li class="dop">
-          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/services.htm">Обучение и поддержка</a></p>
+          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/services.htm">Поддержка и обучение</a></p>
           <div>
             <div class="col3-3">
               <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/videocourse-list.htm">Видеоуроки</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/demand-free-presentation.htm">Заказать презентацию</a>
+              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/order-a-demo.htm">Заказать демонстрацию</a>
               <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/learning.htm">Обучение</a>
               <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/freeconsultation.htm">Бесплатная консультация</a>
-              <a href="">Заявка в техподдержку</a>
+              <a href="http://tickets.wizardsoft.ru/">Заявка в техподдержку</a>
               <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/interactive-support.htm">Удаленная техподдержка</a>
             </div>
           </div>
@@ -183,17 +184,16 @@
           </div>
         </li>
         <li class="dop">
-          <p><a href="">Сотрудничество</a></p>
+          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/cooperation.htm">Сотрудничество</a></p>
           <div>
-            <div class="col3-3">
-              <a href="">Партнерская программа</a>
-              <a href="">Магазины наших партнеров</a>
-              <a href="">Наши дилеры</a>
+            <div class="col2-2">
+              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/study.htm">Учебные центры</a>
+              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/partners.htm">Партнеры</a>
             </div>
           </div>
         </li>
         <li>
-          <a href="">Контакты</a>
+          <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/contacts/contacts.htm">Контакты</a>
         </li>
       </ul>
     </div>
