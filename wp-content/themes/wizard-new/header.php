@@ -22,7 +22,7 @@
 <body>
   <header>
     <div class="grid v-center">
-      <div><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/" class="logo"><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/logo-w-text-red-2.svg" /></a></div>
+      <div><a href="/" class="logo"><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/logo-w-text-red-2.svg" /></a></div>
       <div class="header-menu">
         <div>+7 (950) 043-18-24<br />+7 (950) 043-18-24</div>
         <div>
@@ -63,10 +63,37 @@
   </header>
   <nav>
     <div>
+
+
       <div class="nav-menu-mobile-all">
         <div class="nav-menu-mobile"></div>
         <div class="nav-menu-mobile-block">
-          <ul>
+
+          <?php
+          wp_nav_menu([
+            'theme_location'  => '',
+            'menu'            => '3',
+            'container'       => 'false',
+            'container_class' => '',
+            'container_id'    => '',
+            'menu_class'      => '',
+            'menu_id'         => '',
+            'echo'            => true,
+            'fallback_cb'     => 'wp_page_menu',
+            'before'          => '',
+            'after'           => '',
+            'link_before'     => '',
+            'link_after'      => '',
+            'items_wrap'      => '<ul class="mobi-menu">%3$s</ul>',
+            'depth'           => 0,
+            'walker'          => new mobile_menu
+          ]);
+
+          ?>
+
+
+
+          <!-- <ul>
             <li>
               <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/about.htm">О компании</a></p>
               <div>
@@ -123,14 +150,40 @@
             <li>
               <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/contacts/contacts.htm">Контакты</a></p>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
 
 
-      <ul class="nav-menu">
+
+
+      <?php
+      wp_nav_menu([
+        'theme_location'  => '',
+        'menu'            => '2',
+        'container'       => 'false',
+        'container_class' => '',
+        'container_id'    => '',
+        'menu_class'      => 'nav-menu',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul class="nav-menu">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => new desktop_menu
+      ]);
+
+      ?>
+
+      <!-- Десктопное меню -->
+      <!-- <ul class="nav-menu">
+      
         <li class="dop">
-          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/about.htm">О компании</a></p>
+          <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/about.htm">О компании</a>
           <div>
             <div class="col4-4">
               <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/offices.htm">Представительства</a>
@@ -195,7 +248,7 @@
         <li>
           <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/contacts/contacts.htm">Контакты</a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </nav>
   <div class="bg-black"></div>

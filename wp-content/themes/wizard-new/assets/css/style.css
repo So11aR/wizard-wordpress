@@ -90,19 +90,19 @@ nav ul {list-style:none; padding:0;}
 .nav-menu > li a:hover {color:#f50000;}
 .nav-menu > li:hover a:before {left:0;}
 .active-menu p:before {left:0;}
-.dop > div {display:none; width:100%; max-width:1200px; margin:0 auto; background:#fff; border-radius:0 0 4px 4px; position:absolute; left:0; z-index:2; border-top:1px solid #f2f3f5;}
-.dop > div > div {display:grid; gap:20px; padding:30px;}
+.dop > .menu_sublist {display:none; width:100%; max-width:1200px; margin:0 auto; background:#fff; border-radius:0 0 4px 4px; position:absolute; left:0; z-index:2; border-top:1px solid #f2f3f5;}
+.dop > .menu_sublist > div {display:grid; gap:20px; padding:30px;}
 .dop a {color:#536278;}
 .dop a:hover {color:#f50000;}
 .bg-black {display:none; background:rgba(33,37,43,0.5); height:100vh; width:100%; position:absolute; z-index:1; left:0;}
 
-.dop > div.showme1 {display:block; animation:animation-menu 0.5s ease-in;}
+.dop > .menu_sublist.showme1 {display:block; animation:animation-menu 0.5s ease-in;}
 @keyframes animation-menu {
 from {max-height:0;}
 to {max-height:500px;}
 }
 
-.dop > div.showme1 a {animation:animation-menu-a 0.3s ease-in;}
+.dop > .menu_sublist.showme1 a {animation:animation-menu-a 0.3s ease-in;}
 @keyframes animation-menu-a {
 from {opacity:0;}
 50% {opacity:0;}
@@ -130,12 +130,13 @@ to {opacity:100%;}
 .nav-menu-mobile-all {box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; overflow:auto;}
 .nav-menu-mobile-block {padding-top:15px;}
 .nav-menu-mobile-block li {margin-bottom:20px;}
-.nav-menu-mobile-block p {margin-bottom:10px; padding-bottom:5px; font-weight:700; border-bottom:2px solid #f2f3f5;}
-.nav-menu-mobile-block p:last-child {margin-bottom:0; padding-bottom:0; border-bottom:0;}
-.nav-menu-mobile-block div {display:grid; grid-template-columns:repeat(2, 1fr); font-size:13px;}
-.nav-menu-mobile-block div a {color:#536278; padding:10px 0;}
+.nav-menu-mobile-block > .mobi-menu > li > a {margin-bottom:10px; padding-bottom:5px; font-weight:700; border-bottom:2px solid #f2f3f5; display: block;}
+.nav-menu-mobile-block > .mobi-menu > li > a:last-child {margin-bottom:0; padding-bottom:0; border-bottom:0;}
+.nav-menu-mobile-block .mobi_sublist {display:grid; grid-template-columns:repeat(2, 1fr); font-size:13px;}
+.nav-menu-mobile-block .mobi_sublist li {color:#536278; padding:10px 0;}
+.mobi_sublist li {margin: 0;}
 .nav-menu-mobile-block a:hover {color:#f50000;}
-.nav-menu-mobile-block li p > a {color:#536278;}
+.nav-menu-mobile-block li > a {color:#536278;}
 
 @media screen and (max-width:900px) {
 	.nav-menu li.dop {padding:0 1.4%;}
