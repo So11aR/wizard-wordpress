@@ -12,6 +12,15 @@
       <a href="../">Главная</a>
       <a href="about.htm">О компании</a>
     </div> -->
+
+    <div class="xleb">
+      <?php
+
+      true_breadcrumbs();
+
+      ?>
+    </div>
+
     <h1><?php the_title(); ?></h1>
     <p class="m-b-40"><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
     <div class="grid col3-1 gap20 city-list">
@@ -40,7 +49,7 @@
       ?>
 
         <div class="outline">
-        <!-- <?php echo get_post_meta(get_the_ID(), 'descr1', true); ?> -->
+          <!-- <?php echo get_post_meta(get_the_ID(), 'descr1', true); ?> -->
           <p>
             <strong><?php the_title(); ?></strong><br />
             <span><?php echo get_post_meta(get_the_ID(), 'phone', true); ?></span><br />
@@ -59,7 +68,7 @@
       wp_reset_postdata(); // сброс
 
       ?>
-      
+
     </div>
   </div>
 </section>

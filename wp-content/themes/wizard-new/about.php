@@ -9,6 +9,14 @@
 
 <section>
   <div>
+    <div class="xleb">
+      <?php
+
+      true_breadcrumbs();
+
+      ?>
+    </div>
+    
     <h1><?php the_title(); ?></h1>
     <p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
     <p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr2', true); ?></p>
@@ -112,7 +120,7 @@
   <div>
     <div class="grid col2-2">
       <div>
-        <h2>Наш вклад в развитие отрасли</a>
+        <h2>Наш вклад в развитие отрасли</h2>
       </div>
       <div class="text-right"><a href="">Смотреть еще</a></div>
     </div>

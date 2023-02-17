@@ -1,23 +1,55 @@
 <?php
 
+/**
+ * Enqueues script with WordPress and adds version number that is a timestamp of the file modified date.
+ *
+ * @param string      $handle    Name of the script. Should be unique.
+ * @param string|bool $src       Path to the script from the theme directory of WordPress. Example: '/js/myscript.js'.
+ * @param array       $deps      Optional. An array of registered script handles this script depends on. Default empty array.
+ * @param bool        $in_footer Optional. Whether to enqueue the script before </body> instead of in the <head>.
+ *                               Default 'false'.
+ */
+function enqueue_versioned_script($handle, $src = false, $deps = array(), $in_footer = false)
+{
+  wp_enqueue_script($handle, get_stylesheet_directory_uri() . $src, $deps, filemtime(get_stylesheet_directory() . $src), $in_footer);
+}
+
+/**
+ * Enqueues stylesheet with WordPress and adds version number that is a timestamp of the file modified date.
+ *
+ * @param string      $handle Name of the stylesheet. Should be unique.
+ * @param string|bool $src    Path to the stylesheet from the theme directory of WordPress. Example: '/css/mystyle.css'.
+ * @param array       $deps   Optional. An array of registered stylesheet handles this stylesheet depends on. Default empty array.
+ * @param string      $media  Optional. The media for which this stylesheet has been defined.
+ *                            Default 'all'. Accepts media types like 'all', 'print' and 'screen', or media queries like
+ *                            '(orientation: portrait)' and '(max-width: 640px)'.
+ */
+function enqueue_versioned_style($handle, $src = false, $deps = array(), $media = 'all')
+{
+  wp_enqueue_style($handle, get_stylesheet_directory_uri() . $src, $deps = array(), filemtime(get_stylesheet_directory() . $src), $media);
+}
+
+
 
 function wizardsoft_assets()
 {
 
-  wp_enqueue_style('formscss', get_template_directory_uri() . '/assets/css/forms.css');
-  wp_enqueue_style('tabscss', get_template_directory_uri() . '/assets/css/tabs.css');
-  wp_enqueue_style('windowcss', get_template_directory_uri() . '/assets/css/window.css');
-  wp_enqueue_style('carouselcss', get_template_directory_uri() . '/assets/css/carousel.css');
-  wp_enqueue_style('maincss', get_template_directory_uri() . '/assets/css/style.css');
+  enqueue_versioned_style('forms', '/assets/css/forms.css');
+  enqueue_versioned_style('tabs', '/assets/css/tabs.css');
+  enqueue_versioned_style('window', '/assets/css/window.css');
+  enqueue_versioned_style('carousel', '/assets/css/carousel.css');
+  enqueue_versioned_style('style', '/assets/css/style.css');
+
+  enqueue_versioned_script('nav-script', '/assets/scripts/nav.js', array('jquery'), true);
+  enqueue_versioned_script('nav-mobile-script', '/assets/scripts/nav-mobile.js', array('jquery'), true);
+  enqueue_versioned_script('tabs', '/assets/scripts/tabs.js', array('jquery'), true);
+  enqueue_versioned_script('window-script', '/assets/scripts/window.js', array('jquery'), true);
+  enqueue_versioned_script('carousel', '/assets/scripts/carousel.js', array('jquery'), true);
+  enqueue_versioned_script('swiper-slider', '/assets/scripts/swiper-slider.js', array('jquery'), true);
+  enqueue_versioned_script('sergey', '/assets/scripts/sergey.js', array('jquery'), true);
 
   // wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/scripts/jquery-3.6.1.min.js', array(), '20151215', true );
-  wp_enqueue_script('nav-script', get_template_directory_uri() . '/assets/scripts/nav.js', array(), '20151215', true);
-  wp_enqueue_script('nav-mobile-script', get_template_directory_uri() . '/assets/scripts/nav-mobile.js', array(), '20151215', true);
-  wp_enqueue_script('tabs', get_template_directory_uri() . '/assets/scripts/tabs.js', array(), '20151215', true);
-  wp_enqueue_script('window-script', get_template_directory_uri() . '/assets/scripts/window.js', array(), '20151215', true);
-  wp_enqueue_script('carousel', get_template_directory_uri() . '/assets/scripts/carousel.js', array(), '20151215', true);
-  wp_enqueue_script('swiper-slider', get_template_directory_uri() . '/assets/scripts/swiper-slider.js', array(), '20151215', true);
-  wp_enqueue_script('sergey', get_template_directory_uri() . '/assets/scripts/sergey.js', array(), '20151215', true);
+
 }
 
 function program_products()
@@ -53,11 +85,13 @@ add_theme_support('post-thumbnails', array('portfolio'));
 add_theme_support('menus');
 
 
-class desktop_menu extends Walker_Nav_Menu {
+class desktop_menu extends Walker_Nav_Menu
+{
   /*
-	 * Позволяет перезаписать <ul class="sub-menu">
-	 */
-  function start_lvl( &$output, $depth = 0, $args = NULL ) {
+       * Позволяет перезаписать <ul class="sub-menu">
+       */
+  function start_lvl(&$output, $depth = 0, $args = NULL)
+  {
     $output .= '<ul class="menu_sublist"><div class="element-wrapper">';
   }
 
@@ -70,41 +104,41 @@ class desktop_menu extends Walker_Nav_Menu {
    * @param int $depth Уровень вложенности элемента меню.
    * @param object $args Параметры функции wp_nav_menu
    */
-  function start_el( &$output, $item, $depth = 0, $args = NULL, $id = 0 )
+  function start_el(&$output, $item, $depth = 0, $args = NULL, $id = 0)
   {
     // для WordPress 5.3+
     // function start_el( &$output, $item, $depth = 0, $args = NULL, $id = 0 ) {
     global $wp_query;
     /*
-		 * Некоторые из параметров объекта $item
-		 * ID - ID самого элемента меню, а не объекта на который он ссылается
-		 * menu_item_parent - ID родительского элемента меню
-		 * classes - массив классов элемента меню
-		 * post_date - дата добавления
-		 * post_modified - дата последнего изменения
-		 * post_author - ID пользователя, добавившего этот элемент меню
-		 * title - заголовок элемента меню
-		 * url - ссылка
-		 * attr_title - HTML-атрибут title ссылки
-		 * xfn - атрибут rel
-		 * target - атрибут target
-		 * current - равен 1, если является текущим элементом
-		 * current_item_ancestor - равен 1, если текущим (открытым на сайте) является вложенный элемент данного
-		 * current_item_parent - равен 1, если текущим (открытым на сайте) является родительский элемент данного
-		 * menu_order - порядок в меню
-		 * object_id - ID объекта меню
-		 * type - тип объекта меню (таксономия, пост, произвольно)
-		 * object - какая это таксономия / какой тип поста (page /category / post_tag и т д)
-		 * type_label - название данного типа с локализацией (Рубрика, Страница)
-		 * post_parent - ID родительского поста / категории
-		 * post_title - заголовок, который был у поста, когда он был добавлен в меню
-		 * post_name - ярлык, который был у поста при его добавлении в меню
-		 */
+             * Некоторые из параметров объекта $item
+             * ID - ID самого элемента меню, а не объекта на который он ссылается
+             * menu_item_parent - ID родительского элемента меню
+             * classes - массив классов элемента меню
+             * post_date - дата добавления
+             * post_modified - дата последнего изменения
+             * post_author - ID пользователя, добавившего этот элемент меню
+             * title - заголовок элемента меню
+             * url - ссылка
+             * attr_title - HTML-атрибут title ссылки
+             * xfn - атрибут rel
+             * target - атрибут target
+             * current - равен 1, если является текущим элементом
+             * current_item_ancestor - равен 1, если текущим (открытым на сайте) является вложенный элемент данного
+             * current_item_parent - равен 1, если текущим (открытым на сайте) является родительский элемент данного
+             * menu_order - порядок в меню
+             * object_id - ID объекта меню
+             * type - тип объекта меню (таксономия, пост, произвольно)
+             * object - какая это таксономия / какой тип поста (page /category / post_tag и т д)
+             * type_label - название данного типа с локализацией (Рубрика, Страница)
+             * post_parent - ID родительского поста / категории
+             * post_title - заголовок, который был у поста, когда он был добавлен в меню
+             * post_name - ярлык, который был у поста при его добавлении в меню
+             */
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
     /*
-		 * Генерируем строку с CSS-классами элемента меню
-		 */
+             * Генерируем строку с CSS-классами элемента меню
+             */
     $class_names = $value = '';
     $classes = empty($item->classes) ? array() : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;
@@ -114,14 +148,14 @@ class desktop_menu extends Walker_Nav_Menu {
     $class_names = ' class="' . esc_attr($class_names) . '"';
 
     /*
-		 * Генерируем ID элемента
-		 */
+             * Генерируем ID элемента
+             */
     $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args);
     $id = strlen($id) ? ' id="' . esc_attr($id) . '"' : '';
 
     /*
-		 * Генерируем элемент меню
-		 */
+             * Генерируем элемент меню
+             */
     $output .= $indent . '<li' . $id . $value . $class_names . '>';
 
     // атрибуты элемента, title="", rel="", target="" и href=""
@@ -141,11 +175,13 @@ class desktop_menu extends Walker_Nav_Menu {
   }
 }
 
-class mobile_menu extends Walker_Nav_Menu {
+class mobile_menu extends Walker_Nav_Menu
+{
   /*
-	 * Позволяет перезаписать <ul class="sub-menu">
-	 */
-  function start_lvl( &$output, $depth = 0, $args = NULL ) {
+       * Позволяет перезаписать <ul class="sub-menu">
+       */
+  function start_lvl(&$output, $depth = 0, $args = NULL)
+  {
     $output .= '<ul class="menu_sublist mobi_sublist">';
   }
 
@@ -158,41 +194,41 @@ class mobile_menu extends Walker_Nav_Menu {
    * @param int $depth Уровень вложенности элемента меню.
    * @param object $args Параметры функции wp_nav_menu
    */
-  function start_el( &$output, $item, $depth = 0, $args = NULL, $id = 0 )
+  function start_el(&$output, $item, $depth = 0, $args = NULL, $id = 0)
   {
     // для WordPress 5.3+
     // function start_el( &$output, $item, $depth = 0, $args = NULL, $id = 0 ) {
     global $wp_query;
     /*
-		 * Некоторые из параметров объекта $item
-		 * ID - ID самого элемента меню, а не объекта на который он ссылается
-		 * menu_item_parent - ID родительского элемента меню
-		 * classes - массив классов элемента меню
-		 * post_date - дата добавления
-		 * post_modified - дата последнего изменения
-		 * post_author - ID пользователя, добавившего этот элемент меню
-		 * title - заголовок элемента меню
-		 * url - ссылка
-		 * attr_title - HTML-атрибут title ссылки
-		 * xfn - атрибут rel
-		 * target - атрибут target
-		 * current - равен 1, если является текущим элементом
-		 * current_item_ancestor - равен 1, если текущим (открытым на сайте) является вложенный элемент данного
-		 * current_item_parent - равен 1, если текущим (открытым на сайте) является родительский элемент данного
-		 * menu_order - порядок в меню
-		 * object_id - ID объекта меню
-		 * type - тип объекта меню (таксономия, пост, произвольно)
-		 * object - какая это таксономия / какой тип поста (page /category / post_tag и т д)
-		 * type_label - название данного типа с локализацией (Рубрика, Страница)
-		 * post_parent - ID родительского поста / категории
-		 * post_title - заголовок, который был у поста, когда он был добавлен в меню
-		 * post_name - ярлык, который был у поста при его добавлении в меню
-		 */
+             * Некоторые из параметров объекта $item
+             * ID - ID самого элемента меню, а не объекта на который он ссылается
+             * menu_item_parent - ID родительского элемента меню
+             * classes - массив классов элемента меню
+             * post_date - дата добавления
+             * post_modified - дата последнего изменения
+             * post_author - ID пользователя, добавившего этот элемент меню
+             * title - заголовок элемента меню
+             * url - ссылка
+             * attr_title - HTML-атрибут title ссылки
+             * xfn - атрибут rel
+             * target - атрибут target
+             * current - равен 1, если является текущим элементом
+             * current_item_ancestor - равен 1, если текущим (открытым на сайте) является вложенный элемент данного
+             * current_item_parent - равен 1, если текущим (открытым на сайте) является родительский элемент данного
+             * menu_order - порядок в меню
+             * object_id - ID объекта меню
+             * type - тип объекта меню (таксономия, пост, произвольно)
+             * object - какая это таксономия / какой тип поста (page /category / post_tag и т д)
+             * type_label - название данного типа с локализацией (Рубрика, Страница)
+             * post_parent - ID родительского поста / категории
+             * post_title - заголовок, который был у поста, когда он был добавлен в меню
+             * post_name - ярлык, который был у поста при его добавлении в меню
+             */
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
     /*
-		 * Генерируем строку с CSS-классами элемента меню
-		 */
+             * Генерируем строку с CSS-классами элемента меню
+             */
     $class_names = $value = '';
     $classes = empty($item->classes) ? array() : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;
@@ -202,14 +238,14 @@ class mobile_menu extends Walker_Nav_Menu {
     $class_names = ' class="' . esc_attr($class_names) . '"';
 
     /*
-		 * Генерируем ID элемента
-		 */
+             * Генерируем ID элемента
+             */
     $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args);
     $id = strlen($id) ? ' id="' . esc_attr($id) . '"' : '';
 
     /*
-		 * Генерируем элемент меню
-		 */
+             * Генерируем элемент меню
+             */
     $output .= $indent . '<li' . $id . $value . $class_names . '>';
 
     // атрибуты элемента, title="", rel="", target="" и href=""
@@ -226,5 +262,82 @@ class mobile_menu extends Walker_Nav_Menu {
     $item_output .= $args->after;
 
     $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+  }
+}
+
+function true_breadcrumbs()
+{
+
+  // получаем номер текущей страницы
+  $page_num = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+  $separator = '  '; //  разделяем обычным слэшем, но можете чем угодно другим
+
+  // если главная страница сайта
+  if (is_front_page()) {
+
+    if ($page_num > 1) {
+      echo '<a href="' . site_url() . '">Главная</a>' . $separator . $page_num . '-я страница';
+    } else {
+      echo 'Вы находитесь на главной странице';
+    }
+  } else { // не главная
+
+    echo '<a href="' . site_url() . '">Главная</a>' . $separator;
+
+
+    if (is_single()) { // записи
+
+      the_category(', ');
+      echo $separator;
+      the_title();
+    } elseif (is_page()) { // страницы WordPress
+      global $post;
+      // если у текущей страницы существует родительская
+      if ($post->post_parent) {
+
+        $parent_id  = $post->post_parent; // присвоим в переменную
+        $breadcrumbs = array();
+
+        while ($parent_id) {
+          $page = get_page($parent_id);
+          $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
+          $parent_id = $page->post_parent;
+        }
+
+        echo join($separator, array_reverse($breadcrumbs)) . $separator;
+      }
+      // the_title();
+    } elseif (is_category()) {
+
+      single_cat_title();
+    } elseif (is_tag()) {
+
+      single_tag_title();
+    } elseif (is_day()) { // архивы (по дням)
+
+      echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a>' . $separator;
+      echo '<a href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time('F') . '</a>' . $separator;
+      echo get_the_time('d');
+    } elseif (is_month()) { // архивы (по месяцам)
+
+      echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a>' . $separator;
+      echo get_the_time('F');
+    } elseif (is_year()) { // архивы (по годам)
+
+      echo get_the_time('Y');
+    } elseif (is_author()) { // архивы по авторам
+
+      global $author;
+      $userdata = get_userdata($author);
+      echo 'Опубликовал(а) ' . $userdata->display_name;
+    } elseif (is_404()) { // если страницы не существует
+
+      echo 'Ошибка 404';
+    }
+
+    if ($page_num > 1) { // номер текущей страницы
+      echo ' (' . $page_num . '-я страница)';
+    }
   }
 }

@@ -12,6 +12,15 @@
       <a href="../">Главная</a>
       <a href="products.htm">Программные продукты</a>
     </div> -->
+
+    <div class="xleb">
+      <?php
+
+      true_breadcrumbs();
+
+      ?>
+    </div>
+
     <h1><?php the_title(); ?></h1>
     <div class="grid col2-1 gap40">
       <div><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" /></div>

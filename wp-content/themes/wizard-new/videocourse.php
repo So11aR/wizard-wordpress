@@ -8,10 +8,19 @@
 
 <section>
   <div>
-    <div class="xleb">
+    <!-- <div class="xleb">
       <a href="../">Главная</a>
       <a href="services.htm">Поддержка и обучение</a>
+    </div> -->
+
+    <div class="xleb">
+      <?php
+
+      true_breadcrumbs();
+
+      ?>
     </div>
+
     <h1>Видеокурс по работе с программой «Визардсофт»</h1>
     <div class="details">
       <details>

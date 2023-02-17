@@ -8,9 +8,18 @@
 
 <section>
   <div>
-    <div class="xleb">
+    <!-- <div class="xleb">
       <a href="../">Главная</a>
+    </div> -->
+
+    <div class="xleb">
+      <?php
+
+      true_breadcrumbs();
+
+      ?>
     </div>
+
     <h1><?php the_title(); ?></h1>
     <p class="m-b-30"><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
     <div class="grid gap40 col1 services-list">

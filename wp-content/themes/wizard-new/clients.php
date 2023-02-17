@@ -13,6 +13,15 @@
       <a href="../">Главная</a>
       <a href="about.htm">О компании</a>
     </div> -->
+
+    <div class="xleb">
+      <?php
+
+      true_breadcrumbs();
+
+      ?>
+    </div>
+
     <h1><?php the_title(); ?></h1>
     <p class="m-b-40">
       <?php echo get_post_meta(get_the_ID(), 'descr1', true); ?>

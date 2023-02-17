@@ -12,6 +12,15 @@
       <a href="../">Главная</a>
       <a href="about.htm">О компании</a>
     </div> -->
+
+    <div class="xleb">
+      <?php
+
+      true_breadcrumbs();
+
+      ?>
+    </div>
+    
     <h1><?php the_title(); ?></h1>
     <div class="grid col4-2 certificate-list">
       <?php
