@@ -161,71 +161,6 @@ get_header();
 	</div>
 </section>
 
-<!-- Новости -->
-<?php //if(have_posts()) : 
-?>
-<!--    --><?php //while(have_posts()) : the_post(); 
-						?>
-<!--        <h2><a href="--><?php //the_permalink(); 
-														?><!--">--><?php //the_title(); 
-																				?><!--</a></h2>-->
-<!--        <small>--><?php //the_time('F jS, Y'); 
-											?><!--</small>-->
-<!--        <div class="entry">-->
-<!--            --><?php //the_content(); 
-										?>
-<!--        </div>-->
-<!--    --><?php //endwhile; 
-						?>
-<?php //endif; 
-?>
-
-<!-- begin-->
-
-<?php
-
-$wp_query = new WP_Query(array(
-	"post_type" => "post",
-	"post_status" => "publish",
-	'orderby' => 'post_date',
-	'order'   => 'DESC',
-	"posts_per_page" => 3
-));
-
-if ($wp_query->have_posts()) {
-	$i = 0;
-
-
-	while ($wp_query->have_posts()) {
-		$wp_query->the_post();
-
-		$temp_poists[$i] = $wp_query->posts[$i];
-		$temp_poists[$i]->post_date_format = get_the_date("d.m.Y");
-		$temp_poists[$i]->post_permalink = the_permalink();
-
-
-		echo "<pre>";
-		print_r($wp_query->posts[$i]);
-		echo "</pre>";
-?>
-
-		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-		<br />
-		<?php echo $wp_query->posts[$i]->post_content;  ?>
-		<br />
-		<?php echo get_the_date("d-m-Y"); ?>
-		<hr>
-
-<?php
-		$i++;
-	}
-}
-
-wp_reset_postdata();
-
-?>
-
-<!-- end-->
 <section class="carousel">
 	<div>
 
@@ -238,12 +173,11 @@ wp_reset_postdata();
 
 		<div class="v-scroll m-b-50">
 			<div class="grid col3-1 gap10 news-list news">
-				<a href="<?php echo $temp_poists[0]->guid; ?>">
-					<img src="img/logo-w-red.svg" />
+				<a href="">
+					<img src="img/minstroy.png" />
 					<p>
-						<font><?php echo $temp_poists[0]->post_date_format; ?></font>
-						<h2><?php echo $temp_poists[0]->post_title; ?></h2>
-						<?php echo $temp_poists[0]->post_content; ?>
+						<font>21.10.2022</font>
+						Минстрой РФ опубликовал дополнения к индексам изменения сметной стоимости за 3 квартал 2022 года
 					</p>
 				</a>
 				<a href="">
