@@ -10,8 +10,8 @@ get_header();
 
 ?>
 
+<!-- Карусель -->
 <?php if (have_rows('slajder_na_glavnoj', 'options')) : ?>
-	<!-- Карусель -->
 	<section class="section-line carousel bg-color-grey">
 		<div>
 			<div>
@@ -55,42 +55,19 @@ get_header();
 	<div>
 		<h3>Программные продукты</h3>
 		<div class="grid gap10 col2-1 products-list col-products-index">
-			<?php
+			<?php if (have_rows('spisok_programmnyh_produktov', 'options')) : ?>
 
-			// параметры по умолчанию
-			$my_posts = get_posts(array(
-				'numberposts' => -1,
-				'category'    => 0,
-				'orderby'     => 'date',
-				'order'       => 'ASC',
-				'include'     => array(),
-				'exclude'     => array(),
-				'meta_key'    => '',
-				'meta_value'  => '',
-				'post_type'   => 'program-products',
-				'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-			));
+				<?php while (have_rows('spisok_programmnyh_produktov', 'options')) : the_row();
+					$image = get_sub_field('izobrazhenie');
+					$desc = get_sub_field('opisanie');
+				?>
+					<a href="" class="programmProductElem">
+						<img src="<?php echo $image; ?>" />
+						<p><?php echo $desc; ?></p>
+					</a>
+				<?php endwhile; ?>
 
-			global $post;
-
-			foreach ($my_posts as $post) {
-				setup_postdata($post);
-
-			?>
-
-				<a href="" class="programmProductElem">
-					<img src="<?php echo get_the_post_thumbnail_url(); ?>" />
-					<p><?php echo get_post_meta(get_the_ID(), 'descr', true); ?></p>
-				</a>
-
-			<?php
-
-				// формат вывода the_title() ...
-			}
-
-			wp_reset_postdata(); // сброс
-
-			?>
+			<?php endif; ?>
 
 			<!-- Наш вклад в развитие отрасли -->
 			<?php if (have_rows('nash_vklad_v_razvitie', 'options')) : ?>
@@ -121,8 +98,6 @@ get_header();
 		</div>
 	</div>
 </section>
-
-
 
 <!-- Календарь мероприятий -->
 <section class="bg-color-grey">
