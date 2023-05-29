@@ -46,19 +46,9 @@ get_header();
 					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 				</div>
 			</div>
-
 		</div>
 	</section>
 <?php endif; ?>
-
-
-
-<!--Template Name: main-page  -->
-<!--#include virtual="inc/header.htm"-->
-<!--#include virtual="inc/nav.htm"-->
-
-<!-- Карусель -->
-
 
 <!-- Програмные проудкты -->
 <section>
@@ -102,89 +92,32 @@ get_header();
 
 			?>
 
-			<div>
-				<p class="m-b-30">Наш вклад<br />в развитие отрасли</p>
-				<div class="tabs tabs-style-1">
-					<ul class="tabs__caption grid col3-3 gap10 m-b-30">
+			<!-- Наш вклад в развитие отрасли -->
+			<?php if (have_rows('nash_vklad_v_razvitie', 'options')) : ?>
+				<div>
+					<div class="tabs tabs-style-1">
+						<ul class="tabs__caption grid col3-3 gap10 m-b-30">
+							<?php while (have_rows('nash_vklad_v_razvitie', 'options')) : the_row();
+								$image = get_sub_field('izobrazhenie');
+							?>
+								<li class="miniVklad"><img src="<?php echo $image; ?>" class="img"></li>
+							<?php endwhile; ?>
+						</ul>
 
-						<?php
-
-						// параметры по умолчанию
-						$my_posts = get_posts(array(
-							'numberposts' => -1,
-							'category'    => 0,
-							'orderby'     => 'date',
-							'order'       => 'ASC',
-							'include'     => array(),
-							'exclude'     => array(),
-							'meta_key'    => '',
-							'meta_value'  => '',
-							'post_type'   => 'vklad-mini-img',
-							'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-						));
-
-						global $post;
-
-						foreach ($my_posts as $post) {
-							setup_postdata($post);
-
+						<?php while (have_rows('nash_vklad_v_razvitie', 'options')) : the_row();
+							$image = get_sub_field('izobrazhenie');
+							$desc = get_sub_field('opisanie');
 						?>
-
-							<li class="miniVklad"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img"></li>
-
-						<?php
-
-							// формат вывода the_title() ...
-						}
-
-						wp_reset_postdata(); // сброс
-
-						?>
-
-					</ul>
-
-
-					<?php
-
-					// параметры по умолчанию
-					$my_posts = get_posts(array(
-						'numberposts' => -1,
-						'category'    => 0,
-						'orderby'     => 'date',
-						'order'       => 'ASC',
-						'include'     => array(),
-						'exclude'     => array(),
-						'meta_key'    => '',
-						'meta_value'  => '',
-						'post_type'   => 'vklad-main',
-						'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-					));
-
-					global $post;
-
-					foreach ($my_posts as $post) {
-						setup_postdata($post);
-
-					?>
-
-						<div class="tabs__content">
-
-							<img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img m-b-20">
-							<p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr', true); ?></p>
-							<a href="">Подробнее</a>
-						</div>
-
-					<?php
-
-						// формат вывода the_title() ...
-					}
-
-					wp_reset_postdata(); // сброс
-
-					?>
-
+							<div class="tabs__content">
+								<img src="<?php echo $image; ?>" class="img m-b-20">
+								<p class="m-b-20"><?php echo $desc; ?></p>
+								<a href="">Подробнее</a>
+							</div>
+						<?php endwhile; ?>
+					</div>
 				</div>
-			</div>
+			<?php endif; ?>
+
 		</div>
 	</div>
 </section>
@@ -260,7 +193,7 @@ get_header();
 						?>
 <!--        <h2><a href="--><?php //the_permalink(); 
 														?><!--">--><?php //the_title(); 
-																					?><!--</a></h2>-->
+																				?><!--</a></h2>-->
 <!--        <small>--><?php //the_time('F jS, Y'); 
 											?><!--</small>-->
 <!--        <div class="entry">-->
@@ -433,5 +366,3 @@ wp_reset_postdata();
 get_footer();
 
 ?>
-
-
