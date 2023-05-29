@@ -398,8 +398,9 @@ wp_reset_postdata();
 					?>
 
 				</div>
-				<div class="swiper-button-next swiper-button-disabled" style="top: 50%; transform:translateY(-50%)" tabindex="-1" role="button"></div>
-				<div class="swiper-button-prev" style="top: 50%; transform:translateY(-50%)" tabindex="0" role="button"></div>
+
+				<div class="swiper-button-next swiper-button-next-2 swiper-button-disabled" style="top: 50%; transform:translateY(-50%)" tabindex="-1" role="button"></div>
+				<div class="swiper-button-prev swiper-button-prev-2" style="top: 50%; transform:translateY(-50%)" tabindex="0" role="button"></div>
 				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 			</div>
 		</div>

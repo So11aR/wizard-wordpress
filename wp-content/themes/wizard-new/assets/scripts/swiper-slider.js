@@ -1,4 +1,4 @@
-var swiper = new Swiper(".mySwiper", {
+let swiper = new Swiper(".mySwiper", {
   spaceBetween: 30,
   centeredSlides: true,
   autoplay: {
@@ -15,7 +15,7 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
-var swiper2 = new Swiper(".mySwiper2", {
+let swiper2 = new Swiper(".mySwiper2", {
   slidesPerView: 1,
   spaceBetween: 0,
   centeredSlides: false,
@@ -23,13 +23,13 @@ var swiper2 = new Swiper(".mySwiper2", {
     delay: 4500,
     disableOnInteraction: false,
   },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: false,
-  },
+  // pagination: {
+  //   el: ".swiper-pagination.swiper-pagination-2",
+  //   clickable: false,
+  // },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".swiper-button-next.swiper-button-next-2",
+    prevEl: ".swiper-button-prev.swiper-button-prev-2",
   },
   breakpoints: {
     // when window width is >= 750
