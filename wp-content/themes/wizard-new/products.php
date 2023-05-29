@@ -12,15 +12,13 @@
     <!-- <div class="xleb">
       <a href="../">Главная</a>
     </div> -->
+      <div class="xleb">
+          <?php
 
-    <div class="xleb">
-      <?php
+          true_breadcrumbs();
 
-      true_breadcrumbs();
-
-      ?>
-    </div>
-
+          ?>
+      </div>
     <h1>Программные продукты</h1>
     <?php echo get_post_meta(get_the_ID(), 'descr1', true); ?>
 

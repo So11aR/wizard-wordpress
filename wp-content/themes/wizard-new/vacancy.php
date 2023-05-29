@@ -12,15 +12,13 @@
       <a href="../">Главная</a>
       <a href="about.htm">О компании</a>
     </div> -->
+      <div class="xleb">
+          <?php
 
-    <div class="xleb">
-      <?php
+          true_breadcrumbs();
 
-      true_breadcrumbs();
-
-      ?>
-    </div>
-
+          ?>
+      </div>
     <h1>Карьера в «Визардсофт»</h1>
     <div class="grid col2-1 gap40">
       <div><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" /></div>
@@ -91,13 +89,13 @@
 
           <p class="m-b-5"><strong>Требования:</strong></p>
           <?php echo get_post_meta(get_the_ID(), 'requirements', true); ?>
-
+          
           <p class="m-b-5"><strong>Обязанности:</strong></p>
           <?php echo get_post_meta(get_the_ID(), 'duties', true); ?>
-
+          
           <p class="m-b-5"><strong>Условия:</strong></p>
           <?php echo get_post_meta(get_the_ID(), 'conditions', true); ?>
-
+          
           <div class="grid grid20 resume m-b-30 gap40 v-center bg-color-grey p20">
             <div>
               Ждем Ваше резюме на e-mail: personal@wizardsoft.ru<br />

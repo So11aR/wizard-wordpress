@@ -9,15 +9,14 @@
 
 <section>
   <div>
-    <div class="xleb">
-      <?php
+      <div class="xleb">
+          <?php
 
-      true_breadcrumbs();
+          true_breadcrumbs();
 
-      ?>
-    </div>
-    
-    <h1><?php the_title(); ?></h1>
+          ?>
+      </div>
+      <h1><?php the_title(); ?></h1>
     <p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
     <p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr2', true); ?></p>
     <p class="m-b-40"><?php echo get_post_meta(get_the_ID(), 'descr3', true); ?></p>

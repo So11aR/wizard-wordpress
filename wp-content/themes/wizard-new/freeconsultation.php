@@ -8,22 +8,13 @@
 
 <section>
   <div>
-    <!-- <div class="xleb">
-      <a href="../">Главная</a>
-      <a href="services.htm">Поддержка и обучение</a>
-    </div> -->
+      <div class="xleb">
+          <?php
 
-    <div class="xleb">
-      <?php
+          true_breadcrumbs();
 
-      true_breadcrumbs();
-
-      ?>
-    </div>
-
-
-
-
+          ?>
+      </div>
     <h1>Бесплатные консультации в Визардсофт</h1>
     <p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
     <div class="grid col2-left-icon gap20 m-b-30">

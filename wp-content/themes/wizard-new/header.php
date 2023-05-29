@@ -1,82 +1,92 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
-  <title>Wizardsoft</title>
-  <meta name="keywords" content="Wizardsoft">
-  <meta name="description" content="Wizardsoft">
-  <meta charset="utf-8" />
-  <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizardsoft</title>
+    <meta name="keywords" content="Wizardsoft">
+    <meta name="description" content="Wizardsoft">
+    <meta charset="utf-8" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/svg+xml" href="https://www.design-spb.ru/tmp/2022/wizard-site1/favicon.svg">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="https://www.design-spb.ru/tmp/2022/wizard-site1/favicon.svg">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <script src="https://www.design-spb.ru/tmp/2022/wizard-site1/scripts/jquery-3.6.1.min.js"></script>
+    <script src="https://www.design-spb.ru/tmp/2022/wizard-site1/scripts/jquery-3.6.1.min.js"></script>
 
-  <?php wp_head(); ?>
+    <?php wp_head(); ?>
 
 </head>
 
 <body>
-  <header>
+<header>
     <div class="grid v-center">
-      <div><a href="/" class="logo"><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/logo-w-text-red-2.svg" /></a></div>
-      <div class="header-menu">
-        <div>+7 (950) 043-18-24<br />+7 (950) 043-18-24</div>
-        <div>
-          <div class="window-link"><span class="material-icons">phone_in_talk</span> <span>Заказать звонок</span></div>
-          <div class="window callback">
-            <div class="window-modal p40 r5">
-              <h2><span class="material-icons" title="Заказать звонок">phone_in_talk</span> Заказать звонок</h2>
-              <input type="text" name="name" id="name" required placeholder="Ваше имя" class="m-b-20">
-              <input type="text" name="name" id="name" required placeholder="Ваш номер телефона" class="m-b-20">
-              <input type="submit" value="Заказать">
-              <div class="window-close">×</div>
+        <div><a href="/" class="logo"><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/logo-w-text-red-2.svg" /></a></div>
+        <div class="header-menu">
+            <div>+7 (950) 043-18-24<br />+7 (950) 043-18-24</div>
+            <div>
+                <div class="window-link"><span class="material-icons">phone_in_talk</span> <span>Заказать звонок</span></div>
+                <div class="window callback">
+                    <div class="window-modal p40 r5">
+                        <h2><span class="material-icons" title="Заказать звонок">phone_in_talk</span> Заказать звонок</h2>
+                        <input type="text" name="name" id="name" required placeholder="Ваше имя" class="m-b-20">
+                        <input type="text" name="name" id="name" required placeholder="Ваш номер телефона" class="m-b-20">
+                        <input type="submit" value="Заказать">
+                        <div class="window-close">×</div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div>
+                <a href=""><span class="material-icons" title="Поиск по сайту">search</span> <span>Поиск по сайту</span></a>
+            </div>
+            <div>
+                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/update/update.htm"><span class="material-icons" title="Загрузить обновления">refresh</span> <span>Загрузить обновления</span></a>
+            </div>
         </div>
-        <div>
-          <a href=""><span class="material-icons" title="Поиск по сайту">search</span> <span>Поиск по сайту</span></a>
-        </div>
-        <div>
-          <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/update/update.htm"><span class="material-icons" title="Загрузить обновления">refresh</span> <span>Загрузить обновления</span></a>
-          <!--
-				<div class="window-link"><span class="material-icons">account_circle</span> <span>Личный кабинет</span></div>
-				<div class="window">
-					<div class="window-modal p40 r5">
-						<h2><span class="material-icons">account_circle</span> Личный кабинет</h2>
-						<input type="text" name="name" id="name" required placeholder="Логин" class="m-b-20">
-						<div class="grid m-b-20 v-center" style="grid-template-columns:auto 40px;">
-							<input type="text" name="name" id="name" required placeholder="Пароль">
-							<div class="text-right"><span class="material-icons">visibility_off</span></div>
-						</div>
-						<input type="submit" value="Войти">
-						<div class="window-close">×</div>
-					</div>
-				</div>
-				-->
-        </div>
-      </div>
     </div>
-  </header>
-  <nav>
+</header>
+<nav>
     <div>
 
 
-      <div class="nav-menu-mobile-all">
-        <div class="nav-menu-mobile"></div>
-        <div class="nav-menu-mobile-block">
+        <div class="nav-menu-mobile-all">
+            <div class="nav-menu-mobile"></div>
+            <div class="nav-menu-mobile-block">
 
-          <?php
-          wp_nav_menu([
+                <?php
+                wp_nav_menu([
+                    'theme_location'  => '',
+                    'menu'            => 'mobile-menu',
+                    'container'       => 'false',
+                    'container_class' => '',
+                    'container_id'    => '',
+                    'menu_class'      => '',
+                    'menu_id'         => '',
+                    'echo'            => true,
+                    'fallback_cb'     => 'wp_page_menu',
+                    'before'          => '',
+                    'after'           => '',
+                    'link_before'     => '',
+                    'link_after'      => '',
+                    'items_wrap'      => '<ul class="mobi-menu">%3$s</ul>',
+                    'depth'           => 0,
+                    'walker'          => new mobile_menu
+                ]);
+
+                ?>
+            </div>
+        </div>
+
+        <?php
+        wp_nav_menu([
             'theme_location'  => '',
-            'menu'            => '3',
+            'menu'            => 'main-menu',
             'container'       => 'false',
             'container_class' => '',
             'container_id'    => '',
-            'menu_class'      => '',
+            'menu_class'      => 'nav-menu',
             'menu_id'         => '',
             'echo'            => true,
             'fallback_cb'     => 'wp_page_menu',
@@ -84,171 +94,13 @@
             'after'           => '',
             'link_before'     => '',
             'link_after'      => '',
-            'items_wrap'      => '<ul class="mobi-menu">%3$s</ul>',
+            'items_wrap'      => '<ul class="nav-menu">%3$s</ul>',
             'depth'           => 0,
-            'walker'          => new mobile_menu
-          ]);
+            'walker'          => new desktop_menu
+        ]);
 
-          ?>
+        ?>
 
-
-
-          <!-- <ul>
-            <li>
-              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/about.htm">О компании</a></p>
-              <div>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/offices.htm">Представительства</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/clients.htm">Наши клиенты</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/achievements.htm">Наши заслуги</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/vacancy.htm">Вакансии</a>
-              </div>
-            </li>
-            <li>
-              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/products/products.htm">Продукты</a></p>
-              <div>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/products/products-smeta.htm">SmetaWIZARD</a>
-                <a href="">PlanWIZARD</a>
-                <a href="">BIM WIZARD</a>
-                <a href="">TrioBoxWIZARD</a>
-                <a href="">DigestWIZARD</a>
-                <a href="">Модуль ПНР</a>
-                <a href="">Модуль ПИР</a>
-                <a href="">Модуль УНЦС</a>
-                <a href="">Модуль НМЦК</a>
-                <a href="">Модуль Дорожный</a>
-                <a href="">Энергоаудит</a>
-                <a href="">Установка под Linux</a>
-              </div>
-            </li>
-            <li>
-              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/services.htm">Поддержка и обучение</a></p>
-              <div>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/videocourse-list.htm">Видеоуроки</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/order-a-demo">Заказать демонстрацию</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/learning.htm">Обучение</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/freeconsultation.htm">Бесплатная консультация</a>
-                <a href="http://tickets.wizardsoft.ru/">Заявка в<br />техподдержку</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/interactive-support.htm">Удаленная техподдержка</a>
-              </div>
-            </li>
-            <li>
-              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/shop/shop.htm">Магазин</a></p>
-              <div>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/shop/spb.htm">Санкт-Петербург</a>
-                <a href="">Москва</a>
-                <a href="">Нижний Новгород</a>
-                <a href="">Другие регионы</a>
-              </div>
-            </li>
-            <li>
-              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/cooperation.htm">Сотрудничество</a></p>
-              <div>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/study.htm">Учебные центры</a>
-                <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/partners.htm">Партнеры</a>
-              </div>
-            </li>
-            <li>
-              <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/contacts/contacts.htm">Контакты</a></p>
-            </li>
-          </ul> -->
-        </div>
-      </div>
-
-
-
-
-      <?php
-      wp_nav_menu([
-        'theme_location'  => '',
-        'menu'            => '2',
-        'container'       => 'false',
-        'container_class' => '',
-        'container_id'    => '',
-        'menu_class'      => 'nav-menu',
-        'menu_id'         => '',
-        'echo'            => true,
-        'fallback_cb'     => 'wp_page_menu',
-        'before'          => '',
-        'after'           => '',
-        'link_before'     => '',
-        'link_after'      => '',
-        'items_wrap'      => '<ul class="nav-menu">%3$s</ul>',
-        'depth'           => 0,
-        'walker'          => new desktop_menu
-      ]);
-
-      ?>
-
-      <!-- Десктопное меню -->
-      <!-- <ul class="nav-menu">
-      
-        <li class="dop">
-          <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/about.htm">О компании</a>
-          <div>
-            <div class="col4-4">
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/offices.htm">Представительства</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/clients.htm">Наши клиенты</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/achievements.htm">Наши заслуги</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/vacancy.htm">Вакансии</a>
-            </div>
-          </div>
-        </li>
-        <li class="dop">
-          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/products/products.htm">Продукты</a></p>
-          <div>
-            <div class="col3-3">
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/products/products-smeta.htm">SmetaWIZARD</a>
-              <a href="">PlanWIZARD</a>
-              <a href="">BIM WIZARD</a>
-              <a href="">TrioBoxWIZARD</a>
-              <a href="">DigestWIZARD</a>
-              <a href="">Модуль ПНР</a>
-              <a href="">Модуль ПИР</a>
-              <a href="">Модуль УНЦС</a>
-              <a href="">Модуль НМЦК</a>
-              <a href="">Модуль Дорожный</a>
-              <a href="">Энергоаудит</a>
-              <a href="">Установка под Linux</a>
-            </div>
-          </div>
-        </li>
-        <li class="dop">
-          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/services.htm">Поддержка и обучение</a></p>
-          <div>
-            <div class="col3-3">
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/videocourse-list.htm">Видеоуроки</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/order-a-demo.htm">Заказать демонстрацию</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/learning.htm">Обучение</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/freeconsultation.htm">Бесплатная консультация</a>
-              <a href="http://tickets.wizardsoft.ru/">Заявка в техподдержку</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/interactive-support.htm">Удаленная техподдержка</a>
-            </div>
-          </div>
-        </li>
-        <li class="dop">
-          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/shop/shop.htm">Магазин</a></p>
-          <div>
-            <div class="col4-4">
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/shop/spb.htm">Санкт-Петербург</a>
-              <a href="">Москва</a>
-              <a href="">Нижний Новгород</a>
-              <a href="">Другие регионы</a>
-            </div>
-          </div>
-        </li>
-        <li class="dop">
-          <p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/cooperation.htm">Сотрудничество</a></p>
-          <div>
-            <div class="col2-2">
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/study.htm">Учебные центры</a>
-              <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/cooperation/partners.htm">Партнеры</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <a href="https://www.design-spb.ru/tmp/2022/wizard-site1/contacts/contacts.htm">Контакты</a>
-        </li>
-      </ul> -->
     </div>
-  </nav>
-  <div class="bg-black"></div>
+</nav>
+<div class="bg-black"></div>

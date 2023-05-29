@@ -1,84 +1,41 @@
 <footer>
 	<div>
 		<div class="grid footer-menu m-b-30">
-			<div>
-				<p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/about.htm">О компании</a></p>
-				<div class="footer-mobile">
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/offices.htm">Представительства</a>
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/clients.htm">Наши клиенты</a>
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/achievements.htm">Наши заслуги</a>
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/about/vacancy.htm">Вакансии</a>
-				</div>
-			</div>
-			<div>
-				<p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/products/products.htm">Продукты</a></p>
-				<div class="footer-mobile">
-					<div class="grid col2-2 gap30">
-						<div>
-							<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/products/products-smeta.htm">SmetaWIZARD</a>
-							<a href="">PlanWIZARD</a>
-							<a href="">BIM WIZARD</a>
-							<a href="">TrioBoxWIZARD</a>
-							<a href="">DigestWIZARD</a>
-							<a href="">Модуль ПНР</a>
-						</div>
-						<div>
-							<a href="">Модуль ПИР</a>
-							<a href="">Модуль УНЦС</a>
-							<a href="">Модуль НМЦК</a>
-							<a href="">Модуль Дорожный</a>
-							<a href="">Энергоаудит</a>
-							<a href="">Установка под Linux</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div>
-				<p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/services.htm">Обучение и поддержка</a></p>
-				<div class="footer-mobile">
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/videocourse-list.htm">Видеоуроки</a>
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/demand-free-presentation.htm">Заказать презентацию</a>
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/learning.htm">Обучение</a>
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/freeconsultation.htm">Бесплатная консультация</a>
-					<a href="">Заявка в техническую поддержку</a>
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/services/interactive-support.htm">Удаленная техподдержка</a>
-				</div>
-			</div>
-			<div>
-				<p><a href="https://www.design-spb.ru/tmp/2022/wizard-site1/shop/shop.htm">Магазины</a></p>
-				<div class="footer-mobile">
-					<a href="https://www.design-spb.ru/tmp/2022/wizard-site1/shop/spb.htm">Санкт-Петербург</a>
-					<a href="">Москва</a>
-					<a href="">Нижний Новгород</a>
-					<a href="">Другие регионы</a>
-				</div>
-			</div>
-			<div>
-				<p><a href="">Сотрудничество</a></p>
-				<div class="footer-mobile">
-					<a href="">Партнерская программа</a>
-					<a href="">Магазины наших партнеров</a>
-					<a href="">Наши дилеры</a>	
-				</div>
-			</div>
-			<div>
-				<p><a href="">Новости</a></p>
-				<div class="footer-mobile">
-					<a href="">Новости компании</a>
-					<a href="">Мероприятия</a>
-				</div>
-			</div>
-			<div>
-				<p><a href="">Соцсети</a></p>
-				<div class="footer-mobile">
-					<div class="grid col3-3 gap10">
-						<a href=""><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/vk.svg" /></a>
-						<a href=""><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/youtube.svg" /></a>
-						<a href=""><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/ok.svg" /></a>
-					</div>
-				</div>
-			</div>
+            <?php
+            wp_nav_menu([
+                'theme_location'  => '',
+                'menu'            => 'footer-menu',
+                'container'       => 'false',
+                'container_class' => '',
+                'container_id'    => '',
+                'menu_class'      => 'nav-menus',
+                'menu_id'         => '',
+                'echo'            => true,
+                'fallback_cb'     => 'wp_page_menu',
+                'before'          => '',
+                'after'           => '',
+                'link_before'     => '',
+                'link_after'      => '',
+                'items_wrap'      => '%3$s',
+                'depth'           => 0,
+                'walker'          => new footer_menu
+            ]);
+
+            ?>
+
+            <li class="soc-icons__wrapper">
+                <a href="/">Соцсети</a>
+                <div class="footer-mobile">
+                    <div class="grid col3-3 gap10">
+                        <a href="/"><img src="<?php echo get_template_directory_uri() ?>/assets/img/vk.svg" /></a>
+                        <a href="/"><img src="<?php echo get_template_directory_uri() ?>/assets/img/youtube.svg" /></a>
+                        <a href="/"><img src="<?php echo get_template_directory_uri() ?>/assets/img/ok.svg" /></a>
+                    </div>
+                </div>
+            </li>
 		</div>
+
+
 		<div class="m-b-40">
 			<p><a href="">Контакты</a></p>
 			<div class="footer-mobile">
@@ -123,7 +80,7 @@
 				<a href="index.htm"><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/logo-text-gray.svg" /></a>
 			</div>
 			<div>
-				© 1993–2022 ЗАО «ВИЗАРДСОФТ» — комплексная автоматизация управления затратами в строительствеВсе материалы сайта являются собственностью проекта ЗАО «ВИЗАРДСОФТ». 
+				© 1993–2022 ЗАО «ВИЗАРДСОФТ» — комплексная автоматизация управления затратами в строительствеВсе материалы сайта являются собственностью проекта ЗАО «ВИЗАРДСОФТ».
 				По вопросам копирования и использования информации пишите на электронную почту info@wizardsoft.ru
 			</div>
 			<div>

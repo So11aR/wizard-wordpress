@@ -10,76 +10,55 @@ get_header();
 
 ?>
 
+<?php if (have_rows('slajder_na_glavnoj', 'options')) : ?>
+	<!-- Карусель -->
+	<section class="section-line carousel bg-color-grey">
+		<div>
+			<div>
+				<div class="swiper mySwiper swiper-initialized swiper-horizontal">
+					<div class="swiper-wrapper">
+						<?php while (have_rows('slajder_na_glavnoj', 'options')) : the_row();
+							$image = get_sub_field('izobrazhenie_slajda');
+							$title = get_sub_field('zagolovok_slajda');
+							$desc = get_sub_field('opisanie_slajda');
+							$link = get_sub_field('ssylka_na_straniczu_slajda');
+						?>
+							<div class="swiper-slide">
+								<div class="grid col2-1 v-center">
+									<div>
+										<p class="m-b-10"><?php echo $title; ?></p>
+										<p><?php echo $desc; ?></p>
+										<a href="<?php echo $link; ?>">Подробнее</a>
+									</div>
+									<div>
+										<img src="<?php echo $image; ?>" />
+									</div>
+								</div>
+							</div>
+						<?php endwhile; ?>
+					</div>
+					<div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button"></div>
+					<div class="swiper-button-prev" tabindex="0" role="button"></div>
+					<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+						<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
+						<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0">fghfgh</span>
+					</div>
+					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+				</div>
+			</div>
 
+		</div>
+	</section>
+<?php endif; ?>
+
+
+
+<!--Template Name: main-page  -->
 <!--#include virtual="inc/header.htm"-->
 <!--#include virtual="inc/nav.htm"-->
 
 <!-- Карусель -->
-<section class="section-line carousel bg-color-grey">
-	<div>
-		<div>
-			<div class="swiper mySwiper swiper-initialized swiper-horizontal">
-				<div class="swiper-wrapper">
 
-					<?php
-
-					// параметры по умолчанию
-					$my_posts = get_posts(array(
-						'numberposts' => -1,
-						'category'    => 0,
-						'orderby'     => 'date',
-						'order'       => 'ASC',
-						'include'     => array(),
-						'exclude'     => array(),
-						'meta_key'    => '',
-						'meta_value'  => '',
-						'post_type'   => 'slider-header',
-						'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-					));
-
-					global $post;
-
-					foreach ($my_posts as $post) {
-						setup_postdata($post);
-
-					?>
-
-						<div class="swiper-slide">
-							<div class="grid col2-1 v-center">
-								<div>
-									<p class="m-b-10"><?php the_title(); ?></p>
-									<p><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
-									<a href="">Подробнее</a>
-								</div>
-								<div>
-									<img src="<?php echo get_the_post_thumbnail_url(); ?>" />
-								</div>
-							</div>
-						</div>
-
-					<?php
-
-						// формат вывода the_title() ...
-					}
-
-					wp_reset_postdata(); // сброс
-
-					?>
-
-				</div>
-				<div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button"></div>
-				<div class="swiper-button-prev" tabindex="0" role="button"></div>
-				<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
-					<span class="swiper-pagination-bullet" tabindex="0" role="button"></span>
-
-					<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0">fghfgh</span>
-				</div>
-				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-			</div>
-		</div>
-
-	</div>
-</section>
 
 <!-- Програмные проудкты -->
 <section>
@@ -210,6 +189,8 @@ get_header();
 	</div>
 </section>
 
+
+
 <!-- Календарь мероприятий -->
 <section class="bg-color-grey">
 	<div>
@@ -273,21 +254,88 @@ get_header();
 </section>
 
 <!-- Новости -->
+<?php //if(have_posts()) : 
+?>
+<!--    --><?php //while(have_posts()) : the_post(); 
+						?>
+<!--        <h2><a href="--><?php //the_permalink(); 
+														?><!--">--><?php //the_title(); 
+																					?><!--</a></h2>-->
+<!--        <small>--><?php //the_time('F jS, Y'); 
+											?><!--</small>-->
+<!--        <div class="entry">-->
+<!--            --><?php //the_content(); 
+										?>
+<!--        </div>-->
+<!--    --><?php //endwhile; 
+						?>
+<?php //endif; 
+?>
+
+<!-- begin-->
+
+<?php
+
+$wp_query = new WP_Query(array(
+	"post_type" => "post",
+	"post_status" => "publish",
+	'orderby' => 'post_date',
+	'order'   => 'DESC',
+	"posts_per_page" => 3
+));
+
+if ($wp_query->have_posts()) {
+	$i = 0;
+
+
+	while ($wp_query->have_posts()) {
+		$wp_query->the_post();
+
+		$temp_poists[$i] = $wp_query->posts[$i];
+		$temp_poists[$i]->post_date_format = get_the_date("d.m.Y");
+		$temp_poists[$i]->post_permalink = the_permalink();
+
+
+		echo "<pre>";
+		print_r($wp_query->posts[$i]);
+		echo "</pre>";
+?>
+
+		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+		<br />
+		<?php echo $wp_query->posts[$i]->post_content;  ?>
+		<br />
+		<?php echo get_the_date("d-m-Y"); ?>
+		<hr>
+
+<?php
+		$i++;
+	}
+}
+
+wp_reset_postdata();
+
+?>
+
+<!-- end-->
 <section class="carousel">
 	<div>
+
 		<div class="grid col2-2">
 			<div>
 				<h2>Новости</h2>
 			</div>
 			<div class="text-right"><a href="news/news.htm">Все новости</a></div>
 		</div>
+
 		<div class="v-scroll m-b-50">
 			<div class="grid col3-1 gap10 news-list news">
-				<a href="news/24-10-2022.htm">
+				<a href="<?php echo $temp_poists[0]->guid; ?>">
 					<img src="img/logo-w-red.svg" />
 					<p>
-						<font>24.10.2022</font>
-						Еженедельный бюллетень «Ассистент строителя» № 4 (522) за октябрь 2022 года
+						<font><?php echo $temp_poists[0]->post_date_format; ?></font>
+						<h2><?php echo $temp_poists[0]->post_title; ?></h2>
+						<?php echo $temp_poists[0]->post_content; ?>
 					</p>
 				</a>
 				<a href="">
@@ -306,6 +354,9 @@ get_header();
 				</a>
 			</div>
 		</div>
+
+
+		<!-- Блок Партнеры -->
 		<h2><a href="cooperation/partners.htm">Партнеры</a></h2>
 		<div>
 			<div class="swiper mySwiper2 swiper-initialized swiper-horizontal partners">
@@ -334,7 +385,7 @@ get_header();
 					?>
 
 						<div class="swiper-slide" role="">
-							<a href="" target="_blank"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" /></a>
+							<a href="<?php echo get_post_meta(get_the_ID(), 'link-url', true); ?>" target="_blank"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" /></a>
 						</div>
 
 					<?php
@@ -352,7 +403,7 @@ get_header();
 				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 			</div>
 		</div>
-		
+
 	</div>
 </section>
 
@@ -381,3 +432,5 @@ get_header();
 get_footer();
 
 ?>
+
+
