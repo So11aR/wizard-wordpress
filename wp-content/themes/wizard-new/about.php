@@ -48,49 +48,28 @@
 
   </div>
 </section>
+
+<!-- Блок Отзывы -->
 <section class="bg-color-grey">
   <div>
     <h2>Отзывы Wizardsoft</h2>
-    <p class="m-b-20">Мы будем Вам очень благодарны за обратную связь! Отзыв о нашей работе и наших продуктах можно оставить тут:</p>
-    <div class="grid col4-2 reviews-list">
+    <?php if (have_rows('otzyvy', 'options')) : ?>
+      <p class="m-b-20">Мы будем Вам очень благодарны за обратную связь! Отзыв о нашей работе и наших продуктах можно оставить тут:</p>
+      <div class="grid col4-2 reviews-list">
+        <?php while (have_rows('otzyvy', 'options')) : the_row();
+          $link = get_sub_field('ssylka');
+          $image = get_sub_field('izobrazhenie');
+        ?>
+          <a href="<?php echo $link; ?>">
+            <img src="<?php echo $image; ?>" />
+          </a>
+        <?php endwhile; ?>
+      </div>
+    <?php endif; ?>
 
-      <?php
-
-      // параметры по умолчанию
-      $my_posts = get_posts(array(
-        'numberposts' => -1,
-        'category'    => 0,
-        'orderby'     => 'date',
-        'order'       => 'ASC',
-        'include'     => array(),
-        'exclude'     => array(),
-        'meta_key'    => '',
-        'meta_value'  => '',
-        'post_type'   => 'otzyvs',
-        'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-      ));
-
-      global $post;
-
-      foreach ($my_posts as $post) {
-        setup_postdata($post);
-
-      ?>
-
-        <a href="<?php echo get_post_meta(get_the_ID(), 'reviews_link', true); ?>"><img src="<?php echo get_the_post_thumbnail_url(); ?>" /></a>
-
-      <?php
-
-        // формат вывода the_title() ...
-      }
-
-      wp_reset_postdata(); // сброс
-
-      ?>
-
-    </div>
   </div>
 </section>
+
 <section>
   <div>
     <div class="grid col2-2">
