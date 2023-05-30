@@ -9,67 +9,43 @@
 
 <section>
   <div>
-      <div class="xleb">
-          <?php
+    <div class="xleb">
+      <?php
 
-          true_breadcrumbs();
+      true_breadcrumbs();
 
-          ?>
-      </div>
-      <h1><?php the_title(); ?></h1>
+      ?>
+    </div>
+    <h1><?php the_title(); ?></h1>
     <p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr1', true); ?></p>
     <p class="m-b-20"><?php echo get_post_meta(get_the_ID(), 'descr2', true); ?></p>
     <p class="m-b-40"><?php echo get_post_meta(get_the_ID(), 'descr3', true); ?></p>
 
-    <div class="grid col4-2 certificate-list">
 
-      <?php
-
-      // параметры по умолчанию
-      $my_posts = get_posts(array(
-        'numberposts' => -1,
-        'category'    => 0,
-        'orderby'     => 'date',
-        'order'       => 'ASC', // или DESC если по дате
-        'include'     => array(),
-        'exclude'     => array(),
-        'meta_key'    => '',
-        'meta_value'  => '',
-        'post_type'   => 'sertificates',
-        'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-      ));
-
-      global $post;
-
-      foreach ($my_posts as $post) {
-        setup_postdata($post);
-
-      ?>
-
-        <div>
-          <div class="m-b-10 window-link"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" /></div>
-          <p><?php the_title(); ?></p>
-          <div class="window">
-            <div>
-              <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" />
-              <p><?php the_title(); ?></p>
-              <div class="window-close">×</div>
+    <!-- Блок Партнеры -->
+    <?php if (have_rows('sertifikaty', 'options')) : ?>
+      <div class="grid col4-2 certificate-list">
+        <?php while (have_rows('sertifikaty', 'options')) : the_row();
+          $desc = get_sub_field('opisanie');
+          $image = get_sub_field('izobrazhenie');
+        ?>
+          <div>
+            <div class="m-b-10 window-link">
+              <img src="<?php echo $image; ?>" class="img" />
+            </div>
+            <p><?php echo $desc; ?></p>
+            <div class="window">
+              <div>
+                <img src="<?php echo $image; ?>" class="img" />
+                <p><?php echo $desc; ?></p>
+                <div class="window-close">×</div>
+              </div>
             </div>
           </div>
-        </div>
+        <?php endwhile; ?>
+      </div>
+    <?php endif; ?>
 
-      <?php
-
-
-        // формат вывода the_title() ...
-      }
-
-      wp_reset_postdata(); // сброс
-
-      ?>
-
-
-    </div>
   </div>
 </section>
 <section class="bg-color-grey">
