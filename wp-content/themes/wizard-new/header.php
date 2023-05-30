@@ -26,7 +26,7 @@
         <div><a href="/" class="logo"><img src="https://www.design-spb.ru/tmp/2022/wizard-site1/img/logo-w-text-red-2.svg" /></a></div>
         <div class="header-menu">
             <div>+7 (950) 043-18-24<br />+7 (950) 043-18-24</div>
-            <div>
+            <!-- <div>
                 <div class="window-link"><span class="material-icons">phone_in_talk</span> <span>Заказать звонок</span></div>
                 <div class="window callback">
                     <div class="window-modal p40 r5">
@@ -37,7 +37,7 @@
                         <div class="window-close">×</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div>
                 <a href=""><span class="material-icons" title="Поиск по сайту">search</span> <span>Поиск по сайту</span></a>
             </div>

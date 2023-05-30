@@ -32,7 +32,7 @@ function enqueue_versioned_style( $handle, $src = false, $deps = array(), $media
 function wizardsoft_assets()
 {
 
-    enqueue_versioned_style( 'forms', '/assets/css/forms.css' );
+    enqueue_versioned_style( 'myforms', '/assets/css/forms.css' );
     enqueue_versioned_style( 'tabs', '/assets/css/tabs.css' );
     enqueue_versioned_style( 'window', '/assets/css/window.css' );
     enqueue_versioned_style( 'carousel', '/assets/css/carousel.css' );

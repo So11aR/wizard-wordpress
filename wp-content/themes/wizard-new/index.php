@@ -60,8 +60,10 @@ get_header();
 				<?php while (have_rows('spisok_programmnyh_produktov', 'options')) : the_row();
 					$image = get_sub_field('izobrazhenie');
 					$desc = get_sub_field('opisanie');
+					$cssRule = get_sub_field('css_klass');
+					
 				?>
-					<a href="" class="programmProductElem">
+					<a href="" class="<?php echo $cssRule; ?>">
 						<img src="<?php echo $image; ?>" />
 						<p><?php echo $desc; ?></p>
 					</a>
@@ -77,7 +79,8 @@ get_header();
 							<?php while (have_rows('nash_vklad_v_razvitie', 'options')) : the_row();
 								$image = get_sub_field('izobrazhenie');
 							?>
-								<li class="miniVklad"><img src="<?php echo $image; ?>" class="img"></li>
+								<?php $row_index = get_row_index(); ?>
+								<li data-row="<?php echo $row_index; ?>" class="miniVklad <?php if ($row_index == 1) { echo 'active'; } ?>"><img src="<?php echo $image; ?>" class="img"></li>
 							<?php endwhile; ?>
 						</ul>
 
