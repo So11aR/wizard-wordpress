@@ -198,54 +198,34 @@ get_header();
 		</div>
 
 
-		<!-- Блок Партнеры -->
 		<h2><a href="cooperation/partners.htm">Партнеры</a></h2>
-		<div>
-			<div class="swiper mySwiper2 swiper-initialized swiper-horizontal partners">
-				<div class="swiper-wrapper ">
-					<?php
+		<!-- Блок Партнеры -->
+		<?php if (have_rows('partnery', 'options')) : ?>
+			<div>
+				<div class="swiper mySwiper2 swiper-initialized swiper-horizontal partners">
+					<div class="swiper-wrapper ">
+						<?php while (have_rows('partnery', 'options')) : the_row();
+							$image = get_sub_field('izobrazhenie');
+							$link = get_sub_field('ssylka');
+						?>
+							<div class="swiper-slide" role="">
+								<a href="<?php echo $link; ?>" target="_blank">
+									<img src="<?php echo $image; ?>" class="img" />
+								</a>
+							</div>
+						<?php endwhile; ?>
+					</div>
 
-					// параметры по умолчанию
-					$my_posts = get_posts(array(
-						'numberposts' => -1,
-						'category'    => 0,
-						'orderby'     => 'date',
-						'order'       => 'ASC',
-						'include'     => array(),
-						'exclude'     => array(),
-						'meta_key'    => '',
-						'meta_value'  => '',
-						'post_type'   => 'partners-block',
-						'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-					));
-
-					global $post;
-
-					foreach ($my_posts as $post) {
-						setup_postdata($post);
-
-					?>
-
-						<div class="swiper-slide" role="">
-							<a href="<?php echo get_post_meta(get_the_ID(), 'link-url', true); ?>" target="_blank"><img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img" /></a>
-						</div>
-
-					<?php
-
-						// формат вывода the_title() ...
-					}
-
-					wp_reset_postdata(); // сброс
-
-					?>
-
+					<div class="swiper-button-next swiper-button-next-2 swiper-button-disabled" style="top: 50%; transform:translateY(-50%)" tabindex="-1" role="button"></div>
+					<div class="swiper-button-prev swiper-button-prev-2" style="top: 50%; transform:translateY(-50%)" tabindex="0" role="button"></div>
+					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 				</div>
-
-				<div class="swiper-button-next swiper-button-next-2 swiper-button-disabled" style="top: 50%; transform:translateY(-50%)" tabindex="-1" role="button"></div>
-				<div class="swiper-button-prev swiper-button-prev-2" style="top: 50%; transform:translateY(-50%)" tabindex="0" role="button"></div>
-				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 			</div>
-		</div>
+		<?php endif; ?>
+
+
+
+
 
 	</div>
 </section>
