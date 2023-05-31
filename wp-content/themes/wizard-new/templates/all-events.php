@@ -10,19 +10,6 @@
 ?>
 
 
-<!-- <style>
-  .tabslink a {
-    cursor: pointer;
-  }
-
-  .tabslink .current,
-  .tabslink .current:hover {
-    background: #536278;
-    color: #fff;
-    outline: 1px solid #536278;
-  }
-</style> -->
-
 <section>
   <div>
     <div class="xleb">
@@ -50,7 +37,7 @@
     <?php
     $args_all = array(
       'post_type'      => 'events',
-      'posts_per_page'  => 6,
+      'posts_per_page'  => -1,
     );
     $events_all = get_posts($args_all);
     query_posts($args_all);
@@ -58,15 +45,7 @@
     ?>
 
 
-    <?php if (!empty($events_all)) : ?>
-      <?php foreach ($events_all as $event) { ?>
 
-
-        <!-- TODO: верстка и вывод полей -->
-        <?php echo $event->post_title;?>
-
-      <?php  } ?>
-    <?php endif; ?>
 
     <div class="grid col7-3-2 m-b-20 tabslink" id="flavor-nav">
       <a rel="all" class="current">Все мероприятия</a>
@@ -78,8 +57,58 @@
       <a rel="kon">Конференции</a>
     </div>
 
+
     <div id="all-flavors" class="grid col4-2-1 gap10 news-list calendar">
-      <a href="24-10-2022.htm" class="flavor all kursi">
+      <?php if (!empty($events_all)) : ?>
+        <?php foreach ($events_all as $event) { ?>
+          <?php
+          $eventType = get_field('tip_meropriyatiya', $event->ID);
+          switch ($eventType) {
+            case 'Курсы':
+              $eventTypeImg = '<span class="material-icons">school</span>';
+              $eventCssRule = 'kursi';
+              break;
+            case 'Вебинар':
+              $eventTypeImg = '<span class="material-icons">cast</span>';
+              $eventCssRule = 'webinar';
+              break;
+            case 'Онлайн-уроки':
+              $eventTypeImg = '<span class="material-icons">cast_for_education</span>';
+              $eventCssRule = 'online';
+              break;
+            case 'Интенсивы':
+              $eventTypeImg = '<span class="material-icons">rocket_launch</span>';
+              $eventCssRule = 'int';
+              break;
+            case 'Семинары':
+              $eventTypeImg = '<span class="material-icons">group</span>';
+              $eventCssRule = 'seminar';
+              break;
+            case 'Конференции':
+              $eventTypeImg = '<span class="material-icons">groups</span>';
+              $eventCssRule = 'kon';
+              break;
+          }
+          ?>
+
+          <a href="<?php the_permalink($event->ID); ?>" class="flavor all <?php echo $eventCssRule; ?>">
+            <div class="grid col2-2">
+              <div><?php the_field('data_meropriyatiya', $event->ID); ?></div>
+              <div>Организатор: <?php the_field('organizator', $event->ID); ?></div>
+            </div>
+            <p>
+
+              <?php echo $eventTypeImg; ?>
+              <?php the_field('nazvanie', $event->ID); ?>
+            </p>
+            <?php the_field('opisanie_dlya_prevyu', $event->ID); ?>
+          </a>
+
+
+
+        <?php  } ?>
+      <?php endif; ?>
+      <!-- <a href="24-10-2022.htm" class="flavor all kursi">
         <div class="grid col2-2">
           <div>25.10.2022</div>
           <div>Организатор: ИПАП</div>
@@ -126,7 +155,7 @@
         </div>
         <p><span class="material-icons">groups</span> Курс №7 / 5.0</p>
         Тема 7: Работа с формой Конъюнктурный анализ
-      </a>
+      </a> -->
     </div>
   </div>
 </section>
