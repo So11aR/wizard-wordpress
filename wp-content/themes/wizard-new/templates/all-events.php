@@ -10,7 +10,7 @@
 ?>
 
 
-<style>
+<!-- <style>
   .tabslink a {
     cursor: pointer;
   }
@@ -21,7 +21,7 @@
     color: #fff;
     outline: 1px solid #536278;
   }
-</style>
+</style> -->
 
 <section>
   <div>

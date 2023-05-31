@@ -12,60 +12,58 @@
     <!-- <div class="xleb">
       <a href="../">Главная</a>
     </div> -->
-      <div class="xleb">
-          <?php
+    <div class="xleb">
+      <?php
 
-          true_breadcrumbs();
+      true_breadcrumbs();
 
-          ?>
-      </div>
+      ?>
+    </div>
     <h1>Программные продукты</h1>
     <?php echo get_post_meta(get_the_ID(), 'descr1', true); ?>
 
-    <div class="grid col2-1 gap10 col-products-products m-b-30">
+    <?php if (have_rows('spisok_programmnyh_produktov', 'options')) : ?>
+      <div class="grid col2-1 gap10 col-products-products m-b-30">
+        <?php while (have_rows('spisok_programmnyh_produktov', 'options')) : the_row();
+          $image = get_sub_field('izobrazhenie');
+          $desc = get_sub_field('opisanie');
+          $cssRule = get_sub_field('css_klass');
+          $moduleTitle = get_sub_field('zagolovok_moduli');
+          $modules = get_sub_field('spisok_modulej');
+        ?>
+          <a href="" class="<?php echo $cssRule; ?>">
+            <img src="<?php echo $image; ?>" />
+            <p class="m-b-20"><?php echo $desc; ?></p>
+            <p class="m-b-20"><strong><?php echo $moduleTitle; ?></strong></p>
+            <div class="grid col2-2 gap20">
+              <?php
 
-      <?php
+              if ($modules) : ?>
+                <?php foreach ($modules as $module) : ?>
+                  <?php
 
-      // параметры по умолчанию
-      $my_posts = get_posts(array(
-        'numberposts' => -1,
-        'category'    => 0,
-        'orderby'     => 'date',
-        'order'       => 'ASC',
-        'include'     => array(),
-        'exclude'     => array(),
-        'meta_key'    => '',
-        'meta_value'  => '',
-        'post_type'   => 'program-products',
-        'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
-      ));
-
-      global $post;
-
-      foreach ($my_posts as $post) {
-        setup_postdata($post);
-
-      ?>
-
-        <a href="" class="programmProductsElem">
-          <img src="<?php echo get_the_post_thumbnail_url(); ?>" />
-          <?php echo get_post_meta(get_the_ID(), 'descr', true); ?>
-          <?php echo get_post_meta(get_the_ID(), 'module_title', true); ?>
-          <div class="grid col2-2 gap20">
-            <?php echo get_post_meta(get_the_ID(), 'products_modules', true); ?>
-          </div>
-        </a>
-
-      <?php
-
-        // формат вывода the_title() ...
-      }
-
-      wp_reset_postdata(); // сброс
-
-      ?>
-
-    </div>
+                  switch ($module) {
+                    case 'ПНР':
+                    case 'ПИР':
+                    case 'УНЦС':
+                    case 'НМЦК':
+                    case 'Дорожный':
+                    case 'Infobase Wizard':
+                      $moduleImg = '<span class="material-icons">dashboard_customize</span>';
+                      break;
+                    case 'Энергоаудит':
+                      $moduleImg =  '<span class="material-icons">bolt</span>';
+                      break;
+                  }
+                  ?>
+                  <div><?php echo $moduleImg; ?> <?php echo $module; ?></div>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </div>
+          </a>
+        <?php endwhile; ?>
+      </div>
+    <?php endif; ?>
 
     <div class="grid col4-2 gap10 products-list2">
       <a href=""><span class="material-icons">description</span>DigestWIZARD</a>
