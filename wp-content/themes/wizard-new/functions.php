@@ -50,23 +50,6 @@ function wizardsoft_assets()
 
 }
 
-function program_products()
-{
-  if (is_page('280')) {
-?>
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function(event) {
-        let programms = document.querySelectorAll(".programmProductsElem");
-
-        programms[0].classList.add('smeta')
-        programms[1].classList.add('plan')
-        programms[2].classList.add('bim')
-      });
-    </script>
-  <?php
-  }
-}
-
 
 
 add_action('wp_footer', 'program_products');
