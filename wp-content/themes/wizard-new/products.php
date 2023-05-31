@@ -33,33 +33,41 @@
         ?>
           <a href="" class="<?php echo $cssRule; ?>">
             <img src="<?php echo $image; ?>" />
-            <p class="m-b-20"><?php echo $desc; ?></p>
-            <p class="m-b-20"><strong><?php echo $moduleTitle; ?></strong></p>
-            <div class="grid col2-2 gap20">
-              <?php
+            <?php if (get_sub_field('otobrazhat_moduli')) : ?>
+              <p class="m-b-20"><?php echo $desc; ?></p>
+            <?php else : ?>
+              <p><?php echo $desc; ?></p>
+            <?php endif; ?>
+            
+            <?php if (get_sub_field('otobrazhat_moduli')) : ?>
+              <p class="m-b-20"><strong><?php echo $moduleTitle; ?></strong></p>
 
-              if ($modules) : ?>
-                <?php foreach ($modules as $module) : ?>
-                  <?php
+              <div class="grid col2-2 gap20">
+                <?php
 
-                  switch ($module) {
-                    case 'ПНР':
-                    case 'ПИР':
-                    case 'УНЦС':
-                    case 'НМЦК':
-                    case 'Дорожный':
-                    case 'Infobase Wizard':
-                      $moduleImg = '<span class="material-icons">dashboard_customize</span>';
-                      break;
-                    case 'Энергоаудит':
-                      $moduleImg =  '<span class="material-icons">bolt</span>';
-                      break;
-                  }
-                  ?>
-                  <div><?php echo $moduleImg; ?> <?php echo $module; ?></div>
-                <?php endforeach; ?>
-              <?php endif; ?>
-            </div>
+                if ($modules) : ?>
+                  <?php foreach ($modules as $module) : ?>
+                    <?php
+
+                    switch ($module) {
+                      case 'ПНР':
+                      case 'ПИР':
+                      case 'УНЦС':
+                      case 'НМЦК':
+                      case 'Дорожный':
+                      case 'Infobase Wizard':
+                        $moduleImg = '<span class="material-icons">dashboard_customize</span>';
+                        break;
+                      case 'Энергоаудит':
+                        $moduleImg =  '<span class="material-icons">bolt</span>';
+                        break;
+                    }
+                    ?>
+                    <div><?php echo $moduleImg; ?> <?php echo $module; ?></div>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </div>
+            <?php endif; ?>
           </a>
         <?php endwhile; ?>
       </div>
