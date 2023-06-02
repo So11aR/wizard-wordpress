@@ -61,7 +61,7 @@ get_header();
 					$image = get_sub_field('izobrazhenie');
 					$desc = get_sub_field('opisanie');
 					$cssRule = get_sub_field('css_klass');
-					
+
 				?>
 					<a href="" class="<?php echo $cssRule; ?>">
 						<img src="<?php echo $image; ?>" />
@@ -80,7 +80,9 @@ get_header();
 								$image = get_sub_field('izobrazhenie');
 							?>
 								<?php $row_index = get_row_index(); ?>
-								<li data-row="<?php echo $row_index; ?>" class="miniVklad <?php if ($row_index == 1) { echo 'active'; } ?>"><img src="<?php echo $image; ?>" class="img"></li>
+								<li data-row="<?php echo $row_index; ?>" class="miniVklad <?php if ($row_index == 1) {
+																																						echo 'active';
+																																					} ?>"><img src="<?php echo $image; ?>" class="img"></li>
 							<?php endwhile; ?>
 						</ul>
 
@@ -109,11 +111,80 @@ get_header();
 			<div>
 				<h2>Календарь мероприятий</h2>
 			</div>
-			<div class="text-right"><a href="events/events.htm">Все мероприятия</a></div>
+			<div class="text-right"><a href="/meropriyatiya">Все мероприятия</a></div>
 		</div>
 		<div class="v-scroll">
+
+			<?php
+			$args_all = array(
+				'post_type'      => 'events',
+				'posts_per_page'  => 4,
+				"meta_key" => "data_meropriyatiya",
+				"orderby" => "meta_value_num",
+				"order" => 'ASC'
+				//TODO: убрать прошедшие мероприятия в архив, те что меньше текущей даты
+			);
+			$events_all = get_posts($args_all);
+			query_posts($args_all);
+			wp_reset_postdata();
+			?>
 			<div class="grid col4-2-1 gap10 news-list calendar">
-				<a href="events/24-10-2022.htm" class="grid-item kursi">
+				<?php if (!empty($events_all)) : ?>
+					<?php foreach ($events_all as $event) { ?>
+						<?php
+						// $result = get_field('data_meropriyatiya', $event->ID);
+						// $eventDate = DateTime::createFromFormat('d.m.Y', $result);
+
+						// $eventDateSrt = strtotime($eventDate->format('d.m.Y')); //Дата мероприятия в метке времени Unix
+						// $dateNowStr = strtotime(date('d.m.Y')); // Текущая дата в метке времени Unix
+
+						// echo $eventDateStr;
+						// echo 'Сегодня'.$dateNowStr;
+
+						switch ($eventType) {
+							case 'Курсы':
+								$eventTypeImg = '<span class="material-icons">school</span>';
+								$eventCssRule = 'kursi';
+								break;
+							case 'Вебинар':
+								$eventTypeImg = '<span class="material-icons">cast</span>';
+								$eventCssRule = 'webinar';
+								break;
+							case 'Онлайн-уроки':
+								$eventTypeImg = '<span class="material-icons">cast_for_education</span>';
+								$eventCssRule = 'online';
+								break;
+							case 'Интенсивы':
+								$eventTypeImg = '<span class="material-icons">rocket_launch</span>';
+								$eventCssRule = 'int';
+								break;
+							case 'Семинары':
+								$eventTypeImg = '<span class="material-icons">group</span>';
+								$eventCssRule = 'seminar';
+								break;
+							case 'Конференции':
+								$eventTypeImg = '<span class="material-icons">groups</span>';
+								$eventCssRule = 'kon';
+								break;
+						}
+						?>
+
+						<a href="<?php the_permalink($event->ID); ?>" class="grid-item <?php echo $eventCssRule; ?>">
+							<div class="grid col2-2">
+								<div><?php the_field('data_meropriyatiya', $event->ID); ?></div>
+								<div>Организатор: <?php the_field('organizator', $event->ID); ?></div>
+							</div>
+							<p>
+								<?php echo $eventTypeImg; ?>
+								<?php the_field('nazvanie', $event->ID); ?>
+							</p>
+							<?php the_field('opisanie_dlya_prevyu', $event->ID); ?>
+						</a>
+
+					<?php  } ?>
+				<?php endif; ?>
+
+				<!-- <a href="events/24-10-2022.htm" class="grid-item kursi">
 					<div class="grid col2-2">
 						<div>25.10.2022</div>
 						<div>Организатор: ИПАП</div>
@@ -144,21 +215,7 @@ get_header();
 					</div>
 					<p><span class="material-icons">rocket_launch</span> Курс №7 / 5.0</p>
 					Тема 7: Работа с формой Конъюнктурный анализ
-				</a>
-				<!--
-							<a href="">
-								<p>
-									<font>31.01.2023</font>
-									<span><span class="material-icons">group</span> Семинар №10 /5.0</span>Тема 10: Формы отчетности: М29, Ресурсная ведомость, Ведомость объемов работ
-								</p>
-							</a>
-							<a href="">
-								<p>
-									<font>31.01.2023</font>
-									<span><span class="material-icons">groups</span> Конференция №10 /5.0</span>Тема 10: Формы отчетности: М29, Ресурсная ведомость, Ведомость объемов работ
-								</p>
-							</a>
-							-->
+				</a> -->
 			</div>
 		</div>
 	</div>

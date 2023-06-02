@@ -353,9 +353,9 @@ function true_breadcrumbs()
 
         if (is_single()) { // записи
 
-            the_category(', ');
+            the_category(' ');
             echo $separator;
-            the_title();
+            // the_title();
         } elseif (is_page()) { // страницы WordPress
             global $post;
             // если у текущей страницы существует родительская
