@@ -42,7 +42,7 @@
       <option>Октябрь</option>
       <option>Ноябрь</option>
       <option>Декабрь</option>
-      
+
     </select>
 
     <?php
@@ -58,17 +58,29 @@
     wp_reset_postdata();
     ?>
 
-    <!-- TODO: подгружать табы из админки -->
+    <?php
+    //Вывод категорий по id родительской категории
+    $cat_args = array(
+      'hide_empty' => true, //скрывать пустые
+      'depth'      => 1, //глубина просмотра
+      'child_of'    => 18 //id родительской категории
+    );
+    ?>
+
+
     <div class="grid col7-3-2 m-b-20 tabslink" id="flavor-nav">
       <a rel="all" class="current">Все мероприятия</a>
-      <a rel="kursi">Курсы</a>
-      <a rel="webinar">Вебинар</a>
-      <a rel="online">Онлайн-уроки</a>
-      <a rel="int">Интенсивы</a>
-      <a rel="seminar">Семинары</a>
-      <a rel="kon">Конференции</a>
-    </div>
+      <?php
+      //
+      $event_categories = get_terms('category', $cat_args);
 
+      foreach ($event_categories as $event_cat) {
+
+        $item = '<a rel="' . $event_cat->slug . '" class="">'  . $event_cat->name . '</a>';
+        echo $item;
+      }
+      ?>
+    </div>
 
     <div id="all-flavors" class="grid col4-2-1 gap10 news-list calendar">
       <?php if (!empty($events_all)) : ?>
@@ -83,31 +95,36 @@
           switch ($eventType) {
             case 'Курсы':
               $eventTypeImg = '<span class="material-icons">school</span>';
-              $eventCssRule = 'kursi';
               break;
             case 'Вебинар':
               $eventTypeImg = '<span class="material-icons">cast</span>';
-              $eventCssRule = 'webinar';
               break;
             case 'Онлайн-уроки':
               $eventTypeImg = '<span class="material-icons">cast_for_education</span>';
-              $eventCssRule = 'online';
               break;
             case 'Интенсивы':
               $eventTypeImg = '<span class="material-icons">rocket_launch</span>';
-              $eventCssRule = 'int';
               break;
             case 'Семинары':
               $eventTypeImg = '<span class="material-icons">group</span>';
-              $eventCssRule = 'seminar';
               break;
             case 'Конференции':
               $eventTypeImg = '<span class="material-icons">groups</span>';
-              $eventCssRule = 'kon';
               break;
           }
+          $terms = get_field('kategoriya_meropriyatiya', $event->ID);
           if ($eventDate >= $dateNow) { ?>
-            <a href="<?php the_permalink($event->ID); ?>" class="flavor all <?php echo $eventCssRule; ?>">
+            <a data-tab="<?php if ($terms) {
+                                                                              foreach ($terms as $term) {
+                                                                                echo esc_html($term->slug);
+                                                                              }
+                                                                            }
+                                                                            ?>" href="<?php the_permalink($event->ID); ?>" class="flavor all <?php if ($terms) {
+                                                                              foreach ($terms as $term) {
+                                                                                echo esc_html($term->slug);
+                                                                              }
+                                                                            }
+                                                                            ?>">
               <div class="grid col2-2">
                 <div><?php the_field('data_meropriyatiya', $event->ID); ?></div>
                 <div>Организатор: <?php the_field('organizator', $event->ID); ?></div>
@@ -130,6 +147,10 @@
 
 
 
+
+
+<?php get_footer(); ?>
+
 <script>
   $(function() {
     var newSelection = "";
@@ -144,5 +165,34 @@
       $("." + newSelection).show();
       $("#all-flavors").fadeTo();
     });
+  });
+</script>
+
+<!-- TODO: -->
+<!-- Удалять таб мероприятия, если мероприятия этой категории больше нет -->
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    // Табы навигации
+    // const tabsLink = document.querySelectorAll('.tabslink a')
+    // tabsLink.forEach(function(tabLink) {
+    //   console.log(tabLink);
+    // })
+
+    // const eventItems = document.querySelectorAll('#all-flavors a')
+    // eventItems.forEach(function(eventItem) {
+    //   console.log(eventItem);
+
+    //   switch(eventItem) {
+    //     case eventItem.dataset.tab === 'konferenczii':
+    //       finfo_file
+    //       break;
+    //   }
+
+    //   // if (eventItem.dataset.tab === 'konferenczii') {
+    //   //   console.log(true);
+    //   // }
+    // })
+
+
   });
 </script>
