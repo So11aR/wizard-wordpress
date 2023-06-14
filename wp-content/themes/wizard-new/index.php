@@ -183,39 +183,6 @@ get_header();
 
 					<?php  } ?>
 				<?php endif; ?>
-
-				<!-- <a href="events/24-10-2022.htm" class="grid-item kursi">
-					<div class="grid col2-2">
-						<div>25.10.2022</div>
-						<div>Организатор: ИПАП</div>
-					</div>
-					<p><span class="material-icons">school</span> Курс №7 / 5.0</p>
-					Тема 7: Работа с формой Конъюнктурный анализ
-				</a>
-				<a href="" class="grid-item webinar">
-					<div class="grid col2-2">
-						<div>25.10.2022</div>
-						<div>Организатор: ИПАП</div>
-					</div>
-					<p><span class="material-icons">cast</span> Курс №7 / 5.0</p>
-					Тема 7: Работа с формой Конъюнктурный анализ
-				</a>
-				<a href="" class="grid-item online">
-					<div class="grid col2-2">
-						<div>25.10.2022</div>
-						<div>Организатор: ИПАП</div>
-					</div>
-					<p><span class="material-icons">cast_for_education</span> Курс №7 / 5.0</p>
-					Тема 7: Работа с формой Конъюнктурный анализ
-				</a>
-				<a href="" class="grid-item int">
-					<div class="grid col2-2">
-						<div>25.10.2022</div>
-						<div>Организатор: ИПАП</div>
-					</div>
-					<p><span class="material-icons">rocket_launch</span> Курс №7 / 5.0</p>
-					Тема 7: Работа с формой Конъюнктурный анализ
-				</a> -->
 			</div>
 		</div>
 	</div>
@@ -228,32 +195,35 @@ get_header();
 			<div>
 				<h2>Новости</h2>
 			</div>
-			<div class="text-right"><a href="news/news.htm">Все новости</a></div>
+			<div class="text-right"><a href="/novosti">Все новости</a></div>
 		</div>
 
 		<div class="v-scroll m-b-50">
+			<?php
+			$news_args_all = array(
+				'post_type'      => 'post',
+				'posts_per_page'  => 3,
+				"orderby" => "date",
+				"order" => 'DESC'
+			);
+			$news_all = get_posts($news_args_all);
+			query_posts($news_args_all);
+			wp_reset_postdata();
+			?>
 			<div class="grid col3-1 gap10 news-list news">
-				<a href="">
-					<img src="img/minstroy.png" />
-					<p>
-						<font>21.10.2022</font>
-						Минстрой РФ опубликовал дополнения к индексам изменения сметной стоимости за 3 квартал 2022 года
-					</p>
-				</a>
-				<a href="">
-					<img src="img/minstroy.png" />
-					<p>
-						<font>21.10.2022</font>
-						Минстрой РФ опубликовал дополнения к индексам изменения сметной стоимости за 3 квартал 2022 года
-					</p>
-				</a>
-				<a href="">
-					<img src="img/product-smeta.svg" />
-					<p>
-						<font>17.10.2022</font>
-						Изменения в сметно-нормативной базе ПП SmetaWIZARD с 10 по 14 октября 2022 года
-					</p>
-				</a>
+				<?php if (!empty($news_all)) : ?>
+					<?php foreach ($news_all as $news) { ?>
+						<a href="<?php the_permalink($news->ID); ?>">
+            <img src="<?php echo get_the_post_thumbnail_url($news->ID); ?>" />
+            <p>
+              <font>
+                <?php echo date_i18n('d.m.Y', strtotime($news->post_date)); ?>
+              </font>
+              <?php the_field('prevyu_dlya_novosti', $news->ID); ?>
+            </p>
+          </a>
+					<?php  } ?>
+				<?php endif; ?>
 			</div>
 		</div>
 
